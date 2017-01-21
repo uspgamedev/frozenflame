@@ -76,6 +76,7 @@ max_lines_visible = -1
 
 [node name="SFX" parent="HUD/DeathPanel" instance=ExtResource( 6 )]
 
+params/volume_db = -10.0
 config/samples = SubResource( 1 )
 sample = ExtResource( 7 )
 
