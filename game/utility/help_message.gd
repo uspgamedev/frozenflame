@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 
 const Player = preload("res://objects/player/hero.gd")
 
@@ -29,8 +29,7 @@ var xinput_keys = {
 	"game_panic":"Left Trigger",
 }
 
-onready var label = get_node("CanvasLayer/MessagePanel/Label")
-onready var panel = get_node("CanvasLayer/MessagePanel")
+onready var label = get_node("Label")
 var current_gamepad = INPUT_TYPE.KEYB
 var result_message
 
@@ -60,14 +59,3 @@ func _ready():
 		result_message = message % [keyb_keys[action], action_text]
 
 	label.set_text(result_message)
-	panel.set_global_pos(get_global_pos())
-
-
-func _on_Area2D_body_enter( body ):
-	if body extends Player:
-		panel.popup_centered()
-
-
-func _on_Area2D_body_exit( body ):
-	if body extends Player:
-		panel.hide()
