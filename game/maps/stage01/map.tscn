@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://maps/tilesets/coldhot-tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://objects/player/hero.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://enemies/enemy_ice.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/obstacles/FallenFairy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/obstacles/FallenFairy2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://utility/help_message.tscn" type="PackedScene" id=7]
 
 [node name="Map" type="TileMap"]
 
@@ -62,6 +63,10 @@ transform/pos = Vector2( 192, 304 )
 [node name="FallenFairy 2" parent="Bodies" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 160, 320 )
+
+[node name="HelpMessage" parent="Bodies" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 131, 211 )
 
 [node name="roof" type="TileMap" parent="."]
 
