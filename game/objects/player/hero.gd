@@ -53,5 +53,5 @@ func kill():
     set_process(false)
     animation.play("death")
     var death_slash = load("res://effects/death_slash.tscn").instance()
-    death_slash.set_offset(Vector2(16, 0))
-    add_child(death_slash)
+    death_slash.set_offset(Vector2(0, -16))
+    sprite.add_child(death_slash)
