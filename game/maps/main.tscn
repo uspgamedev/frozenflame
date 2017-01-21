@@ -60,7 +60,9 @@ drag_margin/bottom = 0.2
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 280, 224 )
-bullet_speed = 25.0
-bullet_quantity = 1
+wave_delay = 2.0
+bullet_speed = 60.0
+distance = 200.0
+bullet_quantity = 120
 
 

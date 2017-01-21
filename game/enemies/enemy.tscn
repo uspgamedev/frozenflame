@@ -18,9 +18,8 @@ collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 type = 0
-wave_quantity = 1
 wave_delay = 1
-bullet_speed = 10.0
+bullet_speed = 0.1
 distance = 100
 bullet_quantity = 720
 
@@ -51,8 +50,6 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = true
-
-[node name="Bullets" type="Node2D" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
