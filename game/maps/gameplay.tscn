@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://maps/gameplay.gd" type="Script" id=1]
 [ext_resource path="res://maps/stage01/map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://maps/input.gd" type="Script" id=3]
 [ext_resource path="res://effects/fader.tscn" type="PackedScene" id=4]
 [ext_resource path="res://utility/PressStart-32p.fnt" type="BitmapFont" id=5]
-[ext_resource path="res://maps/music/ice.ogg" type="AudioStream" id=6]
+[ext_resource path="res://utility/sfx.tscn" type="PackedScene" id=6]
+[ext_resource path="res://maps/fail.smp" type="Sample" id=7]
+[ext_resource path="res://maps/music/ice.ogg" type="AudioStream" id=8]
+
+[sub_resource type="SampleLibrary" id=1]
+
 
 [node name="gameplay" type="Node2D"]
 
@@ -69,9 +74,14 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="SFX" parent="HUD/DeathPanel" instance=ExtResource( 6 )]
+
+config/samples = SubResource( 1 )
+sample = ExtResource( 7 )
+
 [node name="MusicPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 6 )
+stream/stream = ExtResource( 8 )
 stream/play = true
 stream/loop = true
 stream/volume_db = 0.0
@@ -79,7 +89,5 @@ stream/autoplay = true
 stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
-
-[connection signal="about_to_show" from="HUD/DeathPanel" to="." method="_on_DeathPanel_about_to_show"]
 
 

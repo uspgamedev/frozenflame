@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=19 format=1]
 
 [ext_resource path="res://objects/monster.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/player/hero.gd" type="Script" id=2]
 [ext_resource path="res://objects/player/char_fogo.tex" type="Texture" id=3]
 [ext_resource path="res://utility/collisionfix.gd" type="Script" id=4]
+[ext_resource path="res://utility/sfx.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/player/death.smp" type="Sample" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -115,6 +117,9 @@ extents = Vector2( 9, 4 )
 custom_solver_bias = 0.0
 extents = Vector2( 31.1169, 33.6211 )
 
+[sub_resource type="SampleLibrary" id=12]
+
+
 [node name="hero" instance=ExtResource( 1 )]
 
 collision/layers = 1
@@ -199,6 +204,12 @@ texture/scale = Vector2( 1, 1 )
 texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
+
+[node name="SFX" parent="." instance=ExtResource( 5 )]
+
+params/volume_db = -20.0
+config/samples = SubResource( 12 )
+sample = ExtResource( 6 )
 
 [connection signal="timeout" from="invincibility" to="." method="_on_invincibility_timeout"]
 

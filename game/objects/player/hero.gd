@@ -10,8 +10,9 @@ const DASHCOOLDOWN = 1.0
 
 var dead = false
 
-onready var sprite = get_node("sprite")
-onready var hitbox = get_node("hitbox")
+onready var sprite  = get_node("sprite")
+onready var hitbox  = get_node("hitbox")
+onready var sfx     = get_node("SFX")
 
 func _move_to(dir):
   ._move_to(dir)
@@ -47,6 +48,7 @@ func _act(act):
 func kill():
   if not dead:
     dead = true
+    sfx.play()
     self.emit_signal("died")
     set_process(false)
     animation.play("death")

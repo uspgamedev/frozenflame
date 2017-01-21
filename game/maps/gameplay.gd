@@ -11,6 +11,8 @@ onready var fader = get_node("Fader")
 onready var death_panel = get_node("HUD/DeathPanel")
 onready var music_player = get_node("MusicPlayer")
 
+onready var fail_sfx = death_panel.get_node("SFX")
+
 var map_scene =  preload("res://maps/stage01/map.tscn")
 var last_entry_point = "Entrance"
 
@@ -22,6 +24,7 @@ func _ready():
   fader.fade_in()
 
 func connect_all():
+  music_player.play()
   if not hero.is_a_parent_of(cam):
     hero.add_child(cam)
   input.connect("hold_direction", hero, "_move_to")
@@ -70,6 +73,8 @@ func player_died():
   input.connect("press_action", self, "death_panel_action")
   yield(hero.get_node("sprite/animation"), "finished")
   death_panel.show()
+  music_player.stop()
+  fail_sfx.play()
 
 func death_panel_action(act):
   if act == 0:
@@ -87,8 +92,3 @@ func death_panel_action(act):
     connect_all()
   else:
     _quit()
-
-func _on_DeathPanel_about_to_show():
-  input.disconnect("press_action", hero, "_act")
-  input.disconnect("hold_direction", hero, "_move_to")
-  input.connect("press_action", self, "death_panel_action")
