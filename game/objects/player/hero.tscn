@@ -123,6 +123,7 @@ texture = ExtResource( 3 )
 offset = Vector2( 0, -20 )
 flip_h = true
 vframes = 4
+frame = 9
 
 [node name="animation" parent="sprite"]
 
@@ -149,6 +150,7 @@ script/script = null
 
 [node name="collision" parent="."]
 
+transform/pos = Vector2( 1, 5.20549e-07 )
 shape = SubResource( 9 )
 trigger = false
 _update_shape_index = 0
