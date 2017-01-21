@@ -3,7 +3,7 @@ extends "res://objects/monster.gd"
 
 const DIR = preload("res://utility/directions.gd")
 const ACT = preload("res://utility/actions.gd")
-const MONSTER = preload("res://objects/monster.gd")
+const Enemy = preload("res://enemies/enemy.gd")
 
 const DASHTIME = 0.1
 const DASHCOOLDOWN = 1.0
@@ -33,18 +33,20 @@ func apply_damage(dmg):
      emit_signal("died")
 
 func _act(act):
-  printt("act=", act)
   if act == ACT.ACCEPT:
     var range_bodies = hitbox.get_overlapping_bodies()
-    printt("bodies=", range_bodies)
     for body in range_bodies:
-      if body extends MONSTER:
-        printt("monster=", body)
-        body.take_dmg(body.attack)
+      if body extends Enemy:
+        body.destroy()
   elif act == ACT.DASH and self.dashCooldown <= 0:
-    printt("DASH")
     self.dashTime = DASHTIME
     self.dashCooldown = DASHCOOLDOWN
 
 func kill():
-	self.emit_signal("died")
+  self.emit_signal("died")
+  set_process(false)
+  animation.play("death")
+  var death_slash = load("res://effects/death_slash.tscn").instance()
+  death_slash.set_offset(Vector2(16, 0))
+  add_child(death_slash)
+  

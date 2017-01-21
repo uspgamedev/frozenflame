@@ -8,4 +8,8 @@ type = 1
 bullet_speed = 50.0
 bullet_quantity = 120
 
+[node name="Sprite" parent="."]
+
+hframes = 11
+
 

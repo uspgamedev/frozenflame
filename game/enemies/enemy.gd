@@ -9,6 +9,7 @@ export(float) var distance = 300
 export(int) var bullet_quantity = 120
 
 onready var timer = get_node("Timer")
+onready var anim  = get_node("Sprite/AnimationPlayer")
 
 var dead_bullets = []
 
@@ -35,6 +36,14 @@ func on_bullet_death(bullet):
 	get_parent().call_deferred("remove_child",bullet)
 	yield(get_tree(), "fixed_frame")
 	dead_bullets.push_back(bullet)
+
+func destroy():
+  timer.disconnect("timeout", self, "_on_Timer_timeout")
+  anim.play("dying")
+  yield(anim, "finished")
+  set_layer_mask(0)
+  set_collision_mask(0)
+  anim.play("dead")
 
 func _on_Timer_timeout():
 	fire_wave()

@@ -1,11 +1,24 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://enemies/bullet.gd" type="Script" id=1]
+[ext_resource path="res://enemies/particles.tex" type="Texture" id=2]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 4, -4, 4, 4, -4, 4, -4, -4 )
+points = Vector2Array( 2, -2, 2, 2, -2, 2, -2, -2 )
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "rotation"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/rot")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 180.0, 360.0 ] }
 
 [node name="Bullet" type="KinematicBody2D"]
 
@@ -18,7 +31,7 @@ script/script = ExtResource( 1 )
 [node name="CollisionArea" type="Area2D" parent="."]
 
 input/pickable = true
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -30,23 +43,26 @@ collision/layers = 2
 [node name="Collision" type="CollisionPolygon2D" parent="CollisionArea"]
 
 build_mode = 0
-polygon = Vector2Array( -4, -4, -4, 4, 4, 4, 4, -4 )
+polygon = Vector2Array( -2, -2, -2, 2, 2, 2, 2, -2 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
-[node name="View" type="Polygon2D" parent="."]
+[node name="View" type="Sprite" parent="."]
 
-polygon = Vector2Array( -4, -4, -4, 4, 4, 4, 4, -4 )
-uv = Vector2Array(  )
-color = Color( 1, 1, 1, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
+transform/pos = Vector2( -2.38419e-07, -1.78814e-07 )
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="animation" type="AnimationPlayer" parent="View"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/rotation = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "rotation"
 
 [connection signal="body_enter" from="CollisionArea" to="." method="_on_CollisionArea_body_enter"]
 
