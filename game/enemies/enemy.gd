@@ -3,10 +3,10 @@ extends KinematicBody2D
 const Bullet = preload("res://enemies/bullet.gd")
 
 export(int, "Fire", "Ice") var type = 0
-export(float) var wave_delay = 1
-export(float) var bullet_speed = 1
-export(float) var distance = 100
-export(int) var bullet_quantity = 720
+export(float) var wave_delay = 4
+export(float) var bullet_speed = 50
+export(float) var distance = 300
+export(int) var bullet_quantity = 120
 
 onready var timer = get_node("Timer")
 

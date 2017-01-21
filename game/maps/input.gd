@@ -36,6 +36,7 @@ func _get_action(e):
         act = 0
     elif e.is_action_pressed("ui_cancel"):
         act = 1
+        get_tree().quit()
     return act
 
 func _get_direction(e):

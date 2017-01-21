@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://maps/tilesets/coldhot-tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://enemies/enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemies/enemy_ice.tscn" type="PackedScene" id=2]
 [ext_resource path="res://maps/portal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/player/hero.tscn" type="PackedScene" id=4]
 
@@ -27,21 +27,18 @@ tile_data = IntArray( -131075, 11, -131074, 10, -131073, 10, -196608, 12, -19660
 
 sort/enabled = true
 
-[node name="Enemy" parent="Bodies" instance=ExtResource( 2 )]
+[node name="EnemyIce" parent="Bodies" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( -256, 64 )
 wave_delay = 3.0
 bullet_speed = 200.0
 distance = 600.0
-bullet_quantity = 120
 
-[node name="Enemy1" parent="Bodies" instance=ExtResource( 2 )]
+[node name="EnemyIce 2" parent="Bodies" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 128, 128 )
-wave_delay = 4.0
 bullet_speed = 200.0
 distance = 600.0
-bullet_quantity = 120
 
 [node name="Entrance" type="Node2D" parent="Bodies"]
 
