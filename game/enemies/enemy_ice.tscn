@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://enemies/enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://effects/shiny.tscn" type="PackedScene" id=2]
 [ext_resource path="res://utility/sfx.tscn" type="PackedScene" id=3]
-[ext_resource path="res://enemies/melting.smp" type="Sample" id=4]
+[ext_resource path="res://enemies/icewave.smp" type="Sample" id=4]
+[ext_resource path="res://enemies/melting.smp" type="Sample" id=5]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -29,7 +30,7 @@ sample = ExtResource( 4 )
 
 params/volume_db = -20.0
 config/samples = SubResource( 2 )
-sample = ExtResource( 2 )
+sample = ExtResource( 5 )
 
 [connection signal="destroyed" from="." to="DeathSFX" method="play"]
 

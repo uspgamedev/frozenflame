@@ -8,9 +8,10 @@ export(float) var bullet_speed = 50
 export(float) var distance = 300
 export(int) var bullet_quantity = 120
 
-onready var timer = get_node("Timer")
-onready var anim  = get_node("Sprite/AnimationPlayer")
-onready var shine = get_node("shiny")
+onready var timer   = get_node("Timer")
+onready var anim    = get_node("Sprite/AnimationPlayer")
+onready var shine   = get_node("shiny")
+onready var wavesfx = get_node("WaveSFX")
 
 var dead_bullets = []
 
@@ -42,6 +43,7 @@ func on_bullet_death(bullet):
 
 func destroy():
   timer.disconnect("timeout", self, "_on_Timer_timeout")
+  timer.disconnect("timeout", wavesfx, "play")
   anim.play("dying")
   emit_signal("destroyed")
   yield(anim, "finished")
