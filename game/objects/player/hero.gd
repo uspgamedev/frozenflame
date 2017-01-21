@@ -36,4 +36,7 @@ func _act(act):
         body.destroy()
 
 func kill():
-	self.emit_signal("died")
+  self.emit_signal("died")
+  set_process(false)
+  animation.play("death")
+  add_child(load("res://effects/death_slash.tscn").instance())
