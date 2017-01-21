@@ -5,6 +5,7 @@
 [ext_resource path="res://maps/input.gd" type="Script" id=3]
 [ext_resource path="res://utility/PressStart-32p.fnt" type="BitmapFont" id=4]
 [ext_resource path="res://maps/music_library.tres" type="SampleLibrary" id=5]
+[ext_resource path="res://effects/fader.tscn" type="PackedScene" id=6]
 
 [node name="gameplay" type="Node2D"]
 
@@ -16,6 +17,11 @@ __meta__ = { "_edit_lock_":true }
 [node name="input" type="Node" parent="."]
 
 script/script = ExtResource( 3 )
+
+[node name="Fader" parent="." instance=ExtResource( 6 )]
+
+fade_in_time = 0.5
+fade_out_time = 0.5
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -81,5 +87,3 @@ default/reverb_send = 0.0
 default/chorus_send = 0.0
 
 [connection signal="about_to_show" from="HUD/DeathPanel" to="." method="_on_DeathPanel_about_to_show"]
-
-

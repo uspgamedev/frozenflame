@@ -7,6 +7,7 @@ onready var cam = Camera2D.new()
 onready var input = get_node("input")
 onready var map = get_node("Map")
 onready var hero = map.get_node("Bodies/Hero")
+onready var fader = get_node("Fader")
 onready var death_panel = get_node("HUD/DeathPanel")
 onready var music_player = get_node("MusicPlayer")
 
@@ -67,7 +68,9 @@ func get_hero():
 
 func player_died():
 	printt("died")
-	death_panel.popup_centered()
+  disconnect_all()
+  input.connect("press_action", self, "death_panel_action")
+  death_panel.popup_centered()
 
 func death_panel_action(act):
 	printt("death_panel_action", act)
