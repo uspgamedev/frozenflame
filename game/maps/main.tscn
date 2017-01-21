@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://maps/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://enemies/enemy.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node2D"]
 
@@ -21,5 +22,45 @@ collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
 tile_data = IntArray( 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 19, 0, 65536, 3, 65555, 1, 131072, 3, 131091, 1, 196608, 3, 196627, 1, 262144, 3, 262163, 1, 327680, 3, 327699, 1, 393216, 3, 393235, 1, 458752, 3, 458771, 1, 524288, 3, 524307, 1, 589824, 3, 589843, 1, 655360, 3, 655379, 1, 720896, 3, 720915, 1, 786432, 3, 786451, 1, 851968, 3, 851987, 1, 917504, 2, 917505, 2, 917506, 2, 917507, 2, 917508, 2, 917509, 2, 917510, 2, 917511, 2, 917512, 2, 917513, 2, 917514, 2, 917515, 2, 917516, 2, 917517, 2, 917518, 2, 917519, 2, 917520, 2, 917521, 2, 917522, 2, 917523, 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+transform/pos = Vector2( 109, 155 )
+polygon = Vector2Array( -12, -12, -12, 12, 12, 12, 12, -12 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="Camera2D" type="Camera2D" parent="Polygon2D"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 280, 224 )
+bullet_speed = 1.0
+bullet_quantity = 1
 
 
