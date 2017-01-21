@@ -8,12 +8,16 @@ const DEACC = 0.75
 const SPEEDLIMIT = ACC * 5
 const EPSILON = 1
 
+const DASHFACTOR = 4
+
 var _ref_dirs = DIR.new()
 
 export(int, "up", "right", "down", "left") var direction
 export(bool) var strife
 
 var speed = Vector2()
+var dashTime = 0
+var dashCooldown = 0
 var animation
 var _body_type
 # body types:
@@ -54,7 +58,18 @@ func _check_collision(motion, collider, normal, delta):
     _slide(motion, normal)
 
 func _apply_speed(delta):
-    var motion = move( self.speed * delta )
+    var motionScale = Vector2()
+    if self.dashTime > 0:
+        motionScale = self.speed * delta * DASHFACTOR
+        self.dashTime -= delta
+    else:
+        motionScale = self.speed * delta
+        self.dashTime = 0
+
+    if self.dashCooldown > 0:
+        self.dashCooldown -= delta
+
+    var motion = move( motionScale )
     if is_colliding():
         var collider = get_collider()
         var normal = get_collision_normal()

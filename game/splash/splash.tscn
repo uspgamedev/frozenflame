@@ -43,8 +43,8 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 160.0
 margin/top = 64.0
-margin/right = -1440.0
-margin/bottom = -1418.0
+margin/right = 0.0
+margin/bottom = 0.0
 texture = ExtResource( 3 )
 stretch_mode = 6
 
