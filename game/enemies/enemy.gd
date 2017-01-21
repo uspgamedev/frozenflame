@@ -21,7 +21,8 @@ func fire_wave():
 		for bcount in range(0,bullet_quantity):
 			var degree = 360/bullet_quantity * bcount
 			var bullet = Bullet.create(self, distance, degree, bullet_speed)
-			bullets.add_child(bullet)
+			bullet.set_pos(get_pos())
+			get_parent().add_child(bullet)
 			printt("shoot")
 
 

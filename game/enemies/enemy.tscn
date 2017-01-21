@@ -20,7 +20,7 @@ script/script = ExtResource( 1 )
 type = 0
 wave_quantity = 1
 wave_delay = 1
-bullet_speed = 0.1
+bullet_speed = 10.0
 distance = 100
 bullet_quantity = 720
 

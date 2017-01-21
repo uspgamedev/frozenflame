@@ -29,7 +29,6 @@ func _ready():
 
 func _fixed_process(delta):
 	var step = Vector2(speed * sin(direction), speed * cos(direction))
-	printt(test_move(step * delta))
 	move(step * delta)
 	if self.get_pos().distance_to(enemy.get_pos()) > distance:
 		queue_free()
