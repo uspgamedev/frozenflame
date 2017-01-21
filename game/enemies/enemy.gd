@@ -33,8 +33,8 @@ func fire_wave():
 		get_parent().add_child(bullet)
 
 func on_bullet_death(bullet):
-	get_parent().call_deferred("remove_child",bullet)
 	yield(get_tree(), "fixed_frame")
+	get_parent().call_deferred("remove_child",bullet)
 	dead_bullets.push_back(bullet)
 
 func destroy():
