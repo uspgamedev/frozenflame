@@ -207,7 +207,7 @@ invert/border = 100.0
 
 [node name="SFX" parent="." instance=ExtResource( 5 )]
 
-params/volume_db = -20.0
+params/volume_db = -10.0
 config/samples = SubResource( 12 )
 sample = ExtResource( 6 )
 

@@ -20,8 +20,9 @@ bullet_quantity = 120
 
 [node name="shiny" parent="." instance=ExtResource( 2 )]
 
-[node name="WavesSFX" parent="." instance=ExtResource( 3 )]
+[node name="WaveSFX" parent="." instance=ExtResource( 3 )]
 
+params/volume_db = -10.0
 config/samples = SubResource( 1 )
 sample = ExtResource( 4 )
 
@@ -32,7 +33,7 @@ sample = ExtResource( 5 )
 
 [connection signal="destroyed" from="." to="DeathSFX" method="play"]
 
-[connection signal="timeout" from="Timer" to="WavesSFX" method="play"]
+[connection signal="timeout" from="Timer" to="WaveSFX" method="play"]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
