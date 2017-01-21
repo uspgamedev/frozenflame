@@ -18,7 +18,6 @@ func _ready():
   connect_all()
   set_process(true)
   death_panel.hide()
-  music_player.play("ice")
 
 func connect_all():
   hero.add_child(cam)
