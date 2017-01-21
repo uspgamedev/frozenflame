@@ -1,12 +1,15 @@
-
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://enemies/enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://utility/sfx.tscn" type="PackedScene" id=2]
-[ext_resource path="res://enemies/icewave.smp" type="Sample" id=3]
-[ext_resource path="res://effects/shiny.tscn" type="PackedScene" id=4]
+[ext_resource path="res://effects/shiny.tscn" type="PackedScene" id=2]
+[ext_resource path="res://utility/sfx.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/melting.smp" type="Sample" id=4]
 
 [sub_resource type="SampleLibrary" id=1]
+
+
+[sub_resource type="SampleLibrary" id=2]
+
 
 [node name="EnemyIce" instance=ExtResource( 1 )]
 
@@ -14,14 +17,24 @@ type = 1
 bullet_speed = 50.0
 bullet_quantity = 120
 
-[node name="shiny" parent="." instance=ExtResource( 4 )]
+[node name="shiny" parent="." instance=ExtResource( 2 )]
 
-[node name="SFX" parent="." instance=ExtResource( 2 )]
+[node name="WaveSFX" parent="." instance=ExtResource( 3 )]
 
 params/volume_db = -20.0
 config/samples = SubResource( 1 )
-sample = ExtResource( 3 )
+sample = ExtResource( 4 )
 
-[connection signal="timeout" from="Timer" to="SFX" method="play"]
+[node name="DeathSFX" parent="." instance=ExtResource( 3 )]
+
+params/volume_db = -20.0
+config/samples = SubResource( 2 )
+sample = ExtResource( 2 )
+
+[connection signal="destroyed" from="." to="DeathSFX" method="play"]
+
+[connection signal="timeout" from="Timer" to="WaveSFX" method="play"]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+

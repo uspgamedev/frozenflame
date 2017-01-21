@@ -14,6 +14,8 @@ onready var shine = get_node("shiny")
 
 var dead_bullets = []
 
+signal destroyed
+
 func _ready():
 	timer.set_wait_time(wave_delay)
 
@@ -41,6 +43,7 @@ func on_bullet_death(bullet):
 func destroy():
   timer.disconnect("timeout", self, "_on_Timer_timeout")
   anim.play("dying")
+  emit_signal("destroyed")
   yield(anim, "finished")
   set_layer_mask(0)
   set_collision_mask(0)
