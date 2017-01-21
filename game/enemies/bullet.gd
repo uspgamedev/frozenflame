@@ -43,3 +43,10 @@ func _on_CollisionArea_body_enter( body ):
 	emit_signal("on_death", self)
 	if body extends Player:
 		body.kill()
+
+func _enter_tree():
+	get_node("CollisionArea").set_enable_monitoring(true)
+	
+func _exit_tree():
+	get_node("CollisionArea").set_enable_monitoring(false)
+	

@@ -3,17 +3,16 @@ extends Node2D
 
 const Portal = preload("res://maps/portal.gd")
 
-onready var maps = {}
 onready var cam = Camera2D.new()
 onready var input = get_node("input")
 onready var map = get_node("Map")
 onready var hero = map.get_node("Bodies/Hero")
 onready var death_panel = get_node("HUD/DeathPanel")
 
+var map_scene =  preload("res://maps/stage01/map.tscn")
 var last_entry_point = "Entrance"
 
 func _ready():
-  maps["res://maps/stage01/map.tscn"] = map
   cam.make_current()
   connect_all()
   set_process(true)
@@ -50,11 +49,8 @@ func _on_teleport(path, entry_point):
   yield(get_tree(), "fixed_frame")
   remove_child(map)
   yield(get_tree(), "fixed_frame")
-  if maps.has(path):
-    map = maps[path]
-  else:
-    map = load(path).instance()
-    maps[path] = map
+  map_scene = load(path)
+  map = map_scene.instance()
   add_child(map)
   hero = map.get_node("Bodies/Hero")
   var entry = map.get_node("Bodies/" + last_entry_point)
@@ -78,6 +74,7 @@ func death_panel_action(act):
 		yield(get_tree(), "fixed_frame")
 		remove_child(map)
 		yield(get_tree(), "fixed_frame")
+		map = map_scene.instance()
 		add_child(map)
 		var entry = map.get_node("Bodies/" + last_entry_point)
 		hero = map.get_node("Bodies/Hero")
