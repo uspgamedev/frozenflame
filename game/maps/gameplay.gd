@@ -8,6 +8,7 @@ onready var input = get_node("input")
 onready var map = get_node("Map")
 onready var hero = map.get_node("Bodies/Hero")
 onready var death_panel = get_node("HUD/DeathPanel")
+onready var music_player = get_node("MusicPlayer")
 
 var map_scene =  preload("res://maps/stage01/map.tscn")
 var last_entry_point = "Entrance"
@@ -17,6 +18,7 @@ func _ready():
   connect_all()
   set_process(true)
   death_panel.hide()
+  music_player.play("ice")
 
 func connect_all():
   hero.add_child(cam)
