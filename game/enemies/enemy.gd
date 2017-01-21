@@ -12,6 +12,7 @@ onready var timer   = get_node("Timer")
 onready var anim    = get_node("Sprite/AnimationPlayer")
 onready var shine   = get_node("shiny")
 onready var wavesfx = get_node("WaveSFX")
+onready var destroyed = false
 
 var dead_bullets = []
 
@@ -42,15 +43,17 @@ func on_bullet_death(bullet):
 	dead_bullets.push_back(bullet)
 
 func destroy():
-  timer.disconnect("timeout", self, "_on_Timer_timeout")
-  timer.disconnect("timeout", wavesfx, "play")
-  anim.play("dying")
-  emit_signal("destroyed")
-  yield(anim, "finished")
-  set_layer_mask(0)
-  set_collision_mask(0)
-  shine.queue_free()
-  anim.play("dead")
+  if not destroyed:
+    destroyed = true
+    timer.disconnect("timeout", self, "_on_Timer_timeout")
+    timer.disconnect("timeout", wavesfx, "play")
+    anim.play("dying")
+    emit_signal("destroyed")
+    yield(anim, "finished")
+    set_layer_mask(0)
+    set_collision_mask(0)
+    shine.queue_free()
+    anim.play("dead")
 
 func _on_Timer_timeout():
 	fire_wave()

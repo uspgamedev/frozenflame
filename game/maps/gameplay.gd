@@ -90,5 +90,3 @@ func death_panel_action(act):
     death_panel.hide()
     input.disconnect("press_action", self, "death_panel_action")
     connect_all()
-  else:
-    _quit()
