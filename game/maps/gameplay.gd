@@ -83,10 +83,13 @@ func death_panel_action(act):
 		hero = map.get_node("Bodies/Hero")
 		hero.set_pos(entry.get_pos())
 		connect_all()
+		if is_connected("press_action", self, "death_panel_action"):
+			input.disconnect("press_action", self, "death_panel_action")
 		death_panel.hide()
 	else:
 		_quit()
 
 func _on_DeathPanel_about_to_show():
 	input.disconnect("press_action", hero, "_act")
+	input.disconnect("hold_direction", hero, "_move_to")
 	input.connect("press_action", self, "death_panel_action")
