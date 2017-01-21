@@ -33,7 +33,7 @@ func apply_damage(dmg):
      emit_signal("died")
 
 func _act(act):
-  if act == ACT.ACCEPT:
+  if act == ACT.INTERACT:
     var range_bodies = hitbox.get_overlapping_bodies()
     for body in range_bodies:
       if body extends Enemy:
