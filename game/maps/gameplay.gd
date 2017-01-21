@@ -44,7 +44,7 @@ func _on_teleport(path, entry_point):
   if maps.has(path):
     map = maps[path]
   else:
-    map = load(path)
+    map = load(path).instance()
     maps[path] = map
   add_child(map)
   hero = map.get_node("Bodies/Hero")

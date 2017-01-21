@@ -120,6 +120,7 @@ script/script = ExtResource( 2 )
 [node name="sprite" parent="."]
 
 texture = ExtResource( 3 )
+offset = Vector2( 0, -20 )
 flip_h = true
 vframes = 4
 frame = 9

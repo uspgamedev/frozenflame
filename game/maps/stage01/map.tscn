@@ -42,13 +42,7 @@ bullet_quantity = 120
 [node name="Portal" parent="Bodies" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 128, 576 )
-target_stage_path = "res://maps/stage01/map.tscn"
-target_stage_entry_point = "Entrance"
-
-[node name="Portal1" parent="Bodies" instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 608, 576 )
-target_stage_path = "res://maps/stage01/map.tscn"
+target_stage_path = "res://maps/stage02/map.tscn"
 target_stage_entry_point = "Entrance"
 
 [node name="Entrance" type="Node2D" parent="Bodies"]
