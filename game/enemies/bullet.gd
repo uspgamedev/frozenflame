@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const BulletScene = preload("res://enemies/bullet.tscn")
+const Player = preload("res://objects/player/hero.gd")
 
 var enemy
 var distance = 100
@@ -40,3 +41,5 @@ func _fixed_process(delta):
 
 func _on_CollisionArea_body_enter( body ):
 	emit_signal("on_death", self)
+	if body extends Player:
+		body.kill()

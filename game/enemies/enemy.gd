@@ -33,6 +33,7 @@ func fire_wave():
 
 func on_bullet_death(bullet):
 	get_parent().call_deferred("remove_child",bullet)
+	yield(get_tree(), "fixed_frame")
 	dead_bullets.push_back(bullet)
 
 func _on_Timer_timeout():

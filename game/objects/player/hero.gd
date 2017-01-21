@@ -37,3 +37,6 @@ func _act(act):
       if body extends MONSTER:
         printt("monster=", body)
         body.take_dmg(body.attack)
+
+func kill():
+	self.emit_signal("died")

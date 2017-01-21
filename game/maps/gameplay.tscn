@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://maps/gameplay.gd" type="Script" id=1]
 [ext_resource path="res://maps/stage01/map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://maps/input.gd" type="Script" id=3]
+[ext_resource path="res://utility/PressStart-32p.fnt" type="BitmapFont" id=4]
 
 [node name="gameplay" type="Node2D"]
 
@@ -14,5 +15,53 @@ __meta__ = { "_edit_lock_":true }
 [node name="input" type="Node" parent="."]
 
 script/script = ExtResource( 3 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="DeathPanel" type="PopupPanel" parent="HUD"]
+
+visibility/visible = false
+visibility/opacity = 0.8
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 320.0
+margin/top = 64.0
+margin/right = -320.0
+margin/bottom = -64.0
+popup/exclusive = true
+
+[node name="Label" type="Label" parent="HUD/DeathPanel"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.820313, 0.160217, 0.160217, 1 )
+text = "You\'ve Failed"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="about_to_show" from="HUD/DeathPanel" to="." method="_on_DeathPanel_about_to_show"]
 
 
