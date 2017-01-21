@@ -41,3 +41,4 @@ func _fixed_process(delta):
 func _on_CollisionArea_body_enter( body ):
 	printt("hit")
 	emit_signal("hit", body)
+	queue_free()
