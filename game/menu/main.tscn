@@ -20,7 +20,7 @@ script/script = ExtResource( 1 )
 
 [node name="TransitionToGameplay" parent="." instance=ExtResource( 2 )]
 
-next_scene_path = "res://stage_intro/main.tscn"
+next_scene_path = "res://maps/gameplay.tscn"
 
 [node name="Title" type="Label" parent="."]
 

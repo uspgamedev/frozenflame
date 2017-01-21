@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://maps/gameplay.gd" type="Script" id=1]
+[ext_resource path="res://maps/map.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/player/hero.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/enemy/nothero.tscn" type="PackedScene" id=4]
+[ext_resource path="res://maps/input.gd" type="Script" id=5]
+
+[node name="gameplay" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="map" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -24.5885, 0 )
+
+[node name="bodies" type="YSort" parent="map"]
+
+sort/enabled = true
+__meta__ = { "_edit_group_":true, "_edit_lock_":true }
+
+[node name="hero" parent="map/bodies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 259, 270 )
+input/pickable = false
+collision/margin = 0.08
+direction = 0
+strife = null
+
+[node name="nothero" parent="map/bodies" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 602.905, 309.362 )
+input/pickable = false
+collision/layers = 3
+collision/mask = 15
+collision/margin = 0.08
+direction = 0
+strife = null
+
+[node name="nothero1" parent="map/bodies" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 500.361, 433.18 )
+input/pickable = false
+collision/layers = 3
+collision/mask = 15
+collision/margin = 0.08
+direction = 0
+strife = null
+
+[node name="nothero2" parent="map/bodies" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 604.903, 967.263 )
+input/pickable = false
+collision/layers = 3
+collision/mask = 15
+collision/margin = 0.08
+direction = 0
+strife = null
+
+[node name="nothero3" parent="map/bodies" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 878.274, 1327.11 )
+input/pickable = false
+collision/layers = 3
+collision/mask = 15
+collision/margin = 0.08
+direction = 0
+strife = null
+
+[node name="nothero4" parent="map/bodies" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1405.49, 1034.21 )
+input/pickable = false
+collision/layers = 3
+collision/mask = 15
+collision/margin = 0.08
+direction = 0
+strife = null
+
+[node name="nothero5" parent="map/bodies" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1469.65, 615.785 )
+input/pickable = false
+collision/layers = 3
+collision/mask = 15
+collision/margin = 0.08
+direction = 0
+strife = null
+
+[node name="nothero6" parent="map/bodies" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1394.33, 1511.22 )
+input/pickable = false
+collision/layers = 3
+collision/mask = 15
+collision/margin = 0.08
+direction = 0
+strife = null
+
+[node name="input" type="Node" parent="."]
+
+script/script = ExtResource( 5 )
+
+
