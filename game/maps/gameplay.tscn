@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://maps/gameplay.gd" type="Script" id=1]
 [ext_resource path="res://maps/stage01/map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://maps/input.gd" type="Script" id=3]
-[ext_resource path="res://utility/PressStart-32p.fnt" type="BitmapFont" id=4]
-[ext_resource path="res://maps/music_library.tres" type="SampleLibrary" id=5]
-[ext_resource path="res://effects/fader.tscn" type="PackedScene" id=6]
+[ext_resource path="res://effects/fader.tscn" type="PackedScene" id=4]
+[ext_resource path="res://utility/PressStart-32p.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://maps/music_library.tres" type="SampleLibrary" id=6]
 
 [node name="gameplay" type="Node2D"]
 
@@ -18,7 +18,7 @@ __meta__ = { "_edit_lock_":true }
 
 script/script = ExtResource( 3 )
 
-[node name="Fader" parent="." instance=ExtResource( 6 )]
+[node name="Fader" parent="." instance=ExtResource( 4 )]
 
 fade_in_time = 0.5
 fade_out_time = 0.5
@@ -60,7 +60,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.820313, 0.160217, 0.160217, 1 )
 text = "You\'ve Failed"
 align = 1
@@ -72,7 +72,7 @@ max_lines_visible = -1
 [node name="MusicPlayer" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
-config/samples = ExtResource( 5 )
+config/samples = ExtResource( 6 )
 default/volume_db = 0.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -87,3 +87,5 @@ default/reverb_send = 0.0
 default/chorus_send = 0.0
 
 [connection signal="about_to_show" from="HUD/DeathPanel" to="." method="_on_DeathPanel_about_to_show"]
+
+

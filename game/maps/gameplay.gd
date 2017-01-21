@@ -69,15 +69,19 @@ func player_died():
   printt("died")
   disconnect_all(false)
   input.connect("press_action", self, "death_panel_action")
+  yield(hero.get_node("sprite/animation"), "finished")
+  death_panel.show()
 
 func death_panel_action(act):
   if act == 0:
-		remove_child(map)
-		yield(get_tree(), "fixed_frame")
-		map = map_scene.instance()
-		add_child(map)
+    hero.remove_child(cam)
+    remove_child(map)
+    yield(get_tree(), "fixed_frame")
+    map = map_scene.instance()
+    add_child(map)
     var bodies = map.get_node("Bodies")
     var entry = bodies.get_node(last_entry_point)
+    hero = bodies.get_node("Hero")
     hero.set_pos(entry.get_pos())
     death_panel.hide()
     input.disconnect("press_action", self, "death_panel_action")

@@ -8,6 +8,8 @@ const Enemy = preload("res://enemies/enemy.gd")
 const DASHTIME = 0.1
 const DASHCOOLDOWN = 1.0
 
+var dead = false
+
 onready var sprite = get_node("sprite")
 onready var hitbox = get_node("hitbox")
 
@@ -43,10 +45,11 @@ func _act(act):
     self.dashCooldown = DASHCOOLDOWN
 
 func kill():
-  self.emit_signal("died")
-  set_process(false)
-  animation.play("death")
-  var death_slash = load("res://effects/death_slash.tscn").instance()
-  death_slash.set_offset(Vector2(16, 0))
-  add_child(death_slash)
-  
+  if not dead:
+    dead = true
+    self.emit_signal("died")
+    set_process(false)
+    animation.play("death")
+    var death_slash = load("res://effects/death_slash.tscn").instance()
+    death_slash.set_offset(Vector2(16, 0))
+    add_child(death_slash)
