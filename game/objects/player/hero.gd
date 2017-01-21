@@ -2,7 +2,7 @@
 extends "res://objects/monster.gd"
 
 const DIR = preload("res://utility/directions.gd")
-const MONSTER = preload("res://objects/monster.gd")
+const Enemy = preload("res://enemies/enemy.gd")
 
 onready var sprite = get_node("sprite")
 onready var hitbox = get_node("hitbox")
@@ -29,14 +29,11 @@ func apply_damage(dmg):
      emit_signal("died")
 
 func _act(act):
-  printt("act=", act)
   if act == 0:
     var range_bodies = hitbox.get_overlapping_bodies()
-    printt("bodies=", range_bodies)
     for body in range_bodies:
-      if body extends MONSTER:
-        printt("monster=", body)
-        body.take_dmg(body.attack)
+      if body extends Enemy:
+        body.destroy()
 
 func kill():
 	self.emit_signal("died")
