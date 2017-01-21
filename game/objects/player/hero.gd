@@ -3,13 +3,20 @@ extends "res://objects/monster.gd"
 
 const DIR = preload("res://utility/directions.gd")
 const ACT = preload("res://utility/actions.gd")
+
 const Enemy = preload("res://enemies/enemy.gd")
+const Bullet = preload("res://enemies/bullet.gd")
 
 const DASHTIME = 0.1
 const DASHCOOLDOWN = 1.0
 
 onready var sprite = get_node("sprite")
 onready var hitbox = get_node("hitbox")
+
+export(float) var bullet_speed = 80
+export(float) var distance = 30
+export(int) var bullet_quantity = 80
+var dead_bullets = []
 
 func _move_to(dir):
   ._move_to(dir)
@@ -49,4 +56,26 @@ func kill():
   var death_slash = load("res://effects/death_slash.tscn").instance()
   death_slash.set_offset(Vector2(16, 0))
   add_child(death_slash)
-  
+
+func fire_wave():
+	#printt("fire_wave", dead_bullets.size())
+	for bcount in range(0,bullet_quantity):
+		var degree = 360/bullet_quantity * bcount
+		var bullet = null
+		if dead_bullets.empty():
+			bullet = Bullet.create()
+			bullet.connect("on_death",self,"on_bullet_death")
+			#printt("creating bullet")
+		else:
+			bullet = dead_bullets[dead_bullets.size() - 1]
+			dead_bullets.pop_back()
+		
+		get_parent().add_child(bullet)
+		bullet.set_pos(get_pos())
+		bullet.setup(true, self, distance, degree, bullet_speed)
+
+func on_bullet_death(bullet):
+	yield(get_tree(), "fixed_frame")
+	get_parent().call_deferred("remove_child",bullet)
+	dead_bullets.push_back(bullet)
+

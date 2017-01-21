@@ -22,15 +22,16 @@ func fire_wave():
 		var degree = 360/bullet_quantity * bcount
 		var bullet = null
 		if dead_bullets.empty():
-			bullet = Bullet.create(self, distance, degree, bullet_speed)
+			bullet = Bullet.create()
 			bullet.connect("on_death",self,"on_bullet_death")
 			#printt("creating bullet")
 		else:
 			bullet = dead_bullets[dead_bullets.size() - 1]
-			bullet.reset(self, distance, degree, bullet_speed)
 			dead_bullets.pop_back()
-		bullet.set_pos(get_pos())
+		
 		get_parent().add_child(bullet)
+		bullet.set_pos(get_pos())
+		bullet.setup(false, self, distance, degree, bullet_speed)
 
 func on_bullet_death(bullet):
 	yield(get_tree(), "fixed_frame")
