@@ -40,6 +40,7 @@ target_stage_entry_point = null
 
 [node name="View" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 0, -4 )
 
 [node name="wall_left" type="Sprite" parent="View"]
@@ -68,6 +69,7 @@ region_rect = Rect2( 0, 96, 96, 32 )
 
 [node name="header" type="Node2D" parent="View"]
 
+editor/display_folded = true
 transform/pos = Vector2( -16, -4 )
 z/z = 10
 
@@ -101,6 +103,7 @@ _update_shape_index = 0
 
 [node name="solid" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 48, 0 )

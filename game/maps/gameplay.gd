@@ -10,6 +10,7 @@ onready var hero = map.get_node("Bodies/Hero")
 onready var fader = get_node("Fader")
 onready var death_panel = get_node("HUD/DeathPanel")
 onready var music_player = get_node("MusicPlayer")
+onready var tween = get_node("tween")
 
 onready var fail_sfx = death_panel.get_node("SFX")
 
@@ -72,10 +73,15 @@ func get_hero():
 func player_died():
   printt("died")
   disconnect_all(false)
-  input.connect("press_action", self, "death_panel_action")
   yield(hero.get_node("sprite/animation"), "finished")
-  death_panel.show()
+  # death panel animation
   music_player.stop()
+  death_panel.set_opacity(0)
+  death_panel.show()
+  tween.interpolate_method(death_panel, "set_opacity", 0, .8, .5, Tween.TRANS_LINEAR, Tween.EASE_IN)
+  tween.start()
+  yield(tween, "tween_complete")
+  input.connect("press_action", self, "death_panel_action")
   fail_sfx.play()
 
 func death_panel_action(act):
