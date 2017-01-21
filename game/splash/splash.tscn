@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://splash/splash.gd" type="Script" id=1]
-[ext_resource path="res://splash/logo_vertical_negative.tex" type="Texture" id=2]
-[ext_resource path="res://effects/fader.tscn" type="PackedScene" id=3]
+[ext_resource path="res://effects/transition.tscn" type="PackedScene" id=2]
+[ext_resource path="res://splash/logo_vertical_negative.tex" type="Texture" id=3]
+[ext_resource path="res://effects/fader.tscn" type="PackedScene" id=4]
 
 [node name="splash" type="Node2D"]
 
 script/script = ExtResource( 1 )
 wait_time_per_image = 3.0
+
+[node name="Transition" parent="." instance=ExtResource( 2 )]
+
+next_scene_path = "res://menu/main.tscn"
 
 [node name="timer" type="Timer" parent="."]
 
@@ -40,9 +45,11 @@ margin/left = 160.0
 margin/top = 64.0
 margin/right = 0.0
 margin/bottom = 0.0
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 stretch_mode = 6
 
-[node name="Fader" parent="." instance=ExtResource( 3 )]
+[node name="Fader" parent="." instance=ExtResource( 4 )]
+
+[connection signal="done_fade_out" from="Fader" to="Transition" method="go"]
 
 
