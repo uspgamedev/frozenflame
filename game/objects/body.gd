@@ -1,7 +1,7 @@
 
 extends KinematicBody2D
 
-const DIR = preload("res://stage_intro/scripts/utility/directions.gd")
+const DIR = preload("res://utility/directions.gd")
 
 const ACC = 32
 const DEACC = 0.75

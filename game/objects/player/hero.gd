@@ -1,8 +1,8 @@
 
-extends "res://stage_intro/scripts/classes/monster.gd"
+extends "res://objects/monster.gd"
 
-const DIR = preload("res://stage_intro/scripts/utility/directions.gd")
-const MONSTER = preload("res://stage_intro/scripts/classes/monster.gd")
+const DIR = preload("res://utility/directions.gd")
+const MONSTER = preload("res://objects/monster.gd")
 
 onready var sprite = get_node("sprite")
 onready var hitbox = get_node("hitbox")

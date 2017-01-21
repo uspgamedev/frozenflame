@@ -1,5 +1,5 @@
 
-extends "res://stage_intro/scripts/classes/monster.gd"
+extends "res://objects/monster.gd"
 
 export(Script) var behaviourScript
 

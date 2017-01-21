@@ -13,7 +13,7 @@ __meta__ = { "_edit_lock_":true }
 
 [node name="map" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( -24.5885, 0 )
+transform/pos = Vector2( -223.557, -295.439 )
 
 [node name="bodies" type="YSort" parent="map"]
 
@@ -23,80 +23,34 @@ __meta__ = { "_edit_group_":true, "_edit_lock_":true }
 [node name="hero" parent="map/bodies" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 259, 270 )
-input/pickable = false
-collision/margin = 0.08
-direction = 0
-strife = null
 
 [node name="nothero" parent="map/bodies" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 602.905, 309.362 )
-input/pickable = false
-collision/layers = 3
-collision/mask = 15
-collision/margin = 0.08
-direction = 0
-strife = null
 
 [node name="nothero1" parent="map/bodies" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 500.361, 433.18 )
-input/pickable = false
-collision/layers = 3
-collision/mask = 15
-collision/margin = 0.08
-direction = 0
-strife = null
 
 [node name="nothero2" parent="map/bodies" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 604.903, 967.263 )
-input/pickable = false
-collision/layers = 3
-collision/mask = 15
-collision/margin = 0.08
-direction = 0
-strife = null
 
 [node name="nothero3" parent="map/bodies" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 878.274, 1327.11 )
-input/pickable = false
-collision/layers = 3
-collision/mask = 15
-collision/margin = 0.08
-direction = 0
-strife = null
 
 [node name="nothero4" parent="map/bodies" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1405.49, 1034.21 )
-input/pickable = false
-collision/layers = 3
-collision/mask = 15
-collision/margin = 0.08
-direction = 0
-strife = null
 
 [node name="nothero5" parent="map/bodies" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1469.65, 615.785 )
-input/pickable = false
-collision/layers = 3
-collision/mask = 15
-collision/margin = 0.08
-direction = 0
-strife = null
 
 [node name="nothero6" parent="map/bodies" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1394.33, 1511.22 )
-input/pickable = false
-collision/layers = 3
-collision/mask = 15
-collision/margin = 0.08
-direction = 0
-strife = null
 
 [node name="input" type="Node" parent="."]
 
