@@ -19,7 +19,6 @@ func _ready():
   connect_all()
   set_process(true)
   death_panel.hide()
-  music_player.play("ice")
   fader.fade_in()
 
 func connect_all():
