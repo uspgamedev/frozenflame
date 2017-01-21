@@ -10,6 +10,7 @@ export(int) var bullet_quantity = 120
 
 onready var timer = get_node("Timer")
 onready var anim  = get_node("Sprite/AnimationPlayer")
+onready var shine = get_node("shiny")
 
 var dead_bullets = []
 
@@ -43,6 +44,7 @@ func destroy():
   yield(anim, "finished")
   set_layer_mask(0)
   set_collision_mask(0)
+  shine.queue_free()
   anim.play("dead")
 
 func _on_Timer_timeout():
