@@ -1,92 +1,31 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://utility/help_message.gd" type="Script" id=1]
-[ext_resource path="res://utility/hint.tex" type="Texture" id=2]
-[ext_resource path="res://utility/PressStart-12p.fnt" type="BitmapFont" id=3]
+[ext_resource path="res://utility/PressStart-12p.fnt" type="BitmapFont" id=2]
 
-[sub_resource type="CircleShape2D" id=1]
+[node name="HelpMessage" type="Node2D"]
 
-custom_solver_bias = 0.0
-radius = 22.2376
-
-[node name="HelpMessage" type="StaticBody2D"]
-
-input/pickable = false
-collision/layers = 1
-collision/mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
 script/script = ExtResource( 1 )
 message = "Press %s to %s"
 action = "game_dash"
 action_text = "Dash"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Label" type="Label" parent="."]
 
-input/pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Sprite" type="Sprite" parent="."]
-
-texture = ExtResource( 2 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-
-[node name="MessagePanel" type="PopupPanel" parent="CanvasLayer"]
-
-visibility/opacity = 0.6
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = -64.0
-margin/top = -32.0
-margin/right = 64.0
-margin/bottom = 32.0
-popup/exclusive = false
-
-[node name="Label" type="Label" parent="CanvasLayer/MessagePanel"]
-
-anchor/right = 1
-anchor/bottom = 1
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-custom_fonts/font = ExtResource( 3 )
+margin/left = -85.0
+margin/top = -31.0
+margin/right = 89.0
+margin/bottom = 33.0
+custom_fonts/font = ExtResource( 2 )
 text = "Press {button} to {action}"
-align = 1
 valign = 1
 autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-
-[connection signal="body_enter" from="Area2D" to="." method="_on_Area2D_body_enter"]
-
-[connection signal="body_exit" from="Area2D" to="." method="_on_Area2D_body_exit"]
 
 
