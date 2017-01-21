@@ -7,7 +7,7 @@
 
 [node name="FloorBlue" type="Sprite" parent="."]
 
-transform/pos = Vector2( 186.832, 224.02 )
+transform/pos = Vector2( 112, 80 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
@@ -15,7 +15,7 @@ frame = 19
 
 [node name="FloorRed" type="Sprite" parent="."]
 
-transform/pos = Vector2( 236.832, 224.02 )
+transform/pos = Vector2( 144, 80 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
@@ -24,143 +24,204 @@ frame = 20
 [node name="Block" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 86.8322, 104.02 )
+transform/pos = Vector2( 48, 48 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
 frame = 9
+__meta__ = { "_edit_group_":true }
 
 [node name="body" parent="Block" instance=ExtResource( 2 )]
 
 [node name="CornerTopLeft" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 36.8322, 54.0205 )
+transform/pos = Vector2( 16, 16 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
+__meta__ = { "_edit_group_":true }
 
 [node name="body" parent="CornerTopLeft" instance=ExtResource( 2 )]
 
 [node name="CornerTopRight" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 136.832, 54.0205 )
+transform/pos = Vector2( 80, 16 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
 frame = 2
+__meta__ = { "_edit_group_":true }
 
 [node name="body" parent="CornerTopRight" instance=ExtResource( 2 )]
 
 [node name="CornerBottomLeft" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 36.8322, 154.02 )
+transform/pos = Vector2( 16, 80 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
 frame = 16
+__meta__ = { "_edit_group_":true }
 
 [node name="body" parent="CornerBottomLeft" instance=ExtResource( 2 )]
 
 [node name="CornerBottomRight" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 136.832, 154.02 )
+transform/pos = Vector2( 80, 80 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
 frame = 18
+__meta__ = { "_edit_group_":true }
 
 [node name="body" parent="CornerBottomRight" instance=ExtResource( 2 )]
 
 [node name="Top" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 87.8322, 54.0205 )
+transform/pos = Vector2( 48, 16 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
 frame = 1
+__meta__ = { "_edit_group_":true }
 
 [node name="body" parent="Top" instance=ExtResource( 2 )]
 
 [node name="Left" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 36.8322, 104.02 )
+transform/pos = Vector2( 16, 48 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
 frame = 8
+__meta__ = { "_edit_group_":true }
 
 [node name="body" parent="Left" instance=ExtResource( 2 )]
 
 [node name="Right" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 136.832, 104.02 )
+transform/pos = Vector2( 80, 48 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
 frame = 10
+__meta__ = { "_edit_group_":true }
 
 [node name="body" parent="Right" instance=ExtResource( 2 )]
 
 [node name="Bottom" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 86.8322, 154.02 )
+transform/pos = Vector2( 48, 80 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
 frame = 17
+__meta__ = { "_edit_group_":true }
 
 [node name="body" parent="Bottom" instance=ExtResource( 2 )]
 
 [node name="InnerCornerTopLeft" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 216.832, 54.0205 )
+transform/pos = Vector2( 112, 16 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
 frame = 3
+__meta__ = { "_edit_group_":true }
 
 [node name="body" parent="InnerCornerTopLeft" instance=ExtResource( 2 )]
 
 [node name="InnerCornerTopRight" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 266.832, 54.0205 )
+transform/pos = Vector2( 144, 16 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
 frame = 4
+__meta__ = { "_edit_group_":true }
 
 [node name="body" parent="InnerCornerTopRight" instance=ExtResource( 2 )]
 
 [node name="InnerCornerBottomLeft" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 216.832, 104.02 )
+transform/pos = Vector2( 112, 48 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
 frame = 11
+__meta__ = { "_edit_group_":true }
 
 [node name="body" parent="InnerCornerBottomLeft" instance=ExtResource( 2 )]
 
 [node name="InnerCornerBottomRight" type="Sprite" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 266.832, 104.02 )
+transform/pos = Vector2( 144, 48 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
 frame = 12
+__meta__ = { "_edit_group_":true }
 
 [node name="body" parent="InnerCornerBottomRight" instance=ExtResource( 2 )]
+
+[node name="ColumnTop" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 176, 16 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+frame = 5
+__meta__ = { "_edit_group_":true }
+
+[node name="body" parent="ColumnTop" instance=ExtResource( 2 )]
+
+[node name="ColumnRight" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 208, 16 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+frame = 6
+__meta__ = { "_edit_group_":true }
+
+[node name="body" parent="ColumnRight" instance=ExtResource( 2 )]
+
+[node name="ColumnBottom" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 176, 48 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+frame = 13
+__meta__ = { "_edit_group_":true }
+
+[node name="body" parent="ColumnBottom" instance=ExtResource( 2 )]
+
+[node name="ColumnLeft" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 208, 48 )
+texture = ExtResource( 1 )
+vframes = 8
+hframes = 8
+frame = 14
+__meta__ = { "_edit_group_":true }
+
+[node name="body" parent="ColumnLeft" instance=ExtResource( 2 )]
 
 
