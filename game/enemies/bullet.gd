@@ -39,6 +39,4 @@ func _fixed_process(delta):
 		emit_signal("on_death", self)
 
 func _on_CollisionArea_body_enter( body ):
-	printt("hit")
-	emit_signal("hit", body)
-	queue_free()
+	emit_signal("on_death", self)

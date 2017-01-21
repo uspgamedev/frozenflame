@@ -8,20 +8,22 @@ export(float) var bullet_speed = 1
 export(float) var distance = 100
 export(int) var bullet_quantity = 720
 
+onready var timer = get_node("Timer")
+
 var dead_bullets = []
 
 func _ready():
-	pass
+	timer.set_wait_time(wave_delay)
 
 func fire_wave():
-	printt("fire_wave", dead_bullets.size())
+	#printt("fire_wave", dead_bullets.size())
 	for bcount in range(0,bullet_quantity):
 		var degree = 360/bullet_quantity * bcount
 		var bullet = null
 		if dead_bullets.empty():
 			bullet = Bullet.create(self, distance, degree, bullet_speed)
 			bullet.connect("on_death",self,"on_bullet_death")
-			printt("creating bullet")
+			#printt("creating bullet")
 		else:
 			bullet = dead_bullets[dead_bullets.size() - 1]
 			bullet.reset(self, distance, degree, bullet_speed)
