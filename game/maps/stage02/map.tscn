@@ -76,8 +76,12 @@ __meta__ = { "_edit_lock_":true }
 
 [node name="HelpMessage" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( -217.934, -52.0776 )
+transform/pos = Vector2( -160, 176 )
 action = "game_interact"
 action_text = "Interact"
+
+[connection signal="destroyed" from="Bodies/EnemyIce" to="Bodies/EnemyIce/DeathSFX" method="play"]
+
+[connection signal="destroyed" from="Bodies/EnemyIce 2" to="Bodies/EnemyIce 2/DeathSFX" method="play"]
 
 
