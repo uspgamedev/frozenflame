@@ -40,7 +40,6 @@ target_stage_entry_point = null
 
 [node name="View" type="Node2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 0, -4 )
 
 [node name="wall_left" type="Sprite" parent="View"]
