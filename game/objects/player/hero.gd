@@ -39,4 +39,7 @@ func kill():
   self.emit_signal("died")
   set_process(false)
   animation.play("death")
-  add_child(load("res://effects/death_slash.tscn").instance())
+  var death_slash = load("res://effects/death_slash.tscn").instance()
+  death_slash.set_offset(Vector2(16, 0))
+  add_child(death_slash)
+  
