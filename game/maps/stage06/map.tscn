@@ -43,11 +43,11 @@ target_stage_path = "res://ending/win/goodend.tscn"
 
 [node name="FairyPortal1" parent="Bodies" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 690.303, 206.094 )
+transform/pos = Vector2( 690.303, 215.094 )
 
 [node name="FairyPortal3" parent="Bodies" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 690.303, 272.094 )
+transform/pos = Vector2( 690.303, 265.094 )
 
 [node name="TorreAndanteE" parent="Bodies" instance=ExtResource( 5 )]
 
@@ -73,13 +73,15 @@ bullet_quantity = 100
 transform/pos = Vector2( 425, 140 )
 wave_delay = 6.0
 bullet_speed = 100.0
+bullet_time = 100.0
 bullet_quantity = 100
 
 [node name="EnemyIce2" parent="Bodies" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 425, 320 )
-wave_delay = 12.0
+wave_delay = 6.0
 bullet_speed = 100.0
+bullet_time = 100.0
 bullet_quantity = 100
 
 [node name="EnemyIce3" parent="Bodies" instance=ExtResource( 6 )]
@@ -87,13 +89,15 @@ bullet_quantity = 100
 transform/pos = Vector2( 560, 320 )
 wave_delay = 6.0
 bullet_speed = 100.0
+bullet_time = 100.0
 bullet_quantity = 100
 
 [node name="EnemyIce4" parent="Bodies" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 560, 140 )
-wave_delay = 12.0
+wave_delay = 6.0
 bullet_speed = 100.0
+bullet_time = 100.0
 bullet_quantity = 100
 
 [node name="Paths" type="Node" parent="."]
@@ -147,7 +151,7 @@ auto_start = false
 
 [node name="Node2D" type="Node2D" parent="Paths/PathFollowFP1/Waypoints"]
 
-transform/pos = Vector2( 689.999, 198 )
+transform/pos = Vector2( 689.999, 214 )
 
 [node name="Node2D1" type="Node2D" parent="Paths/PathFollowFP1/Waypoints"]
 
