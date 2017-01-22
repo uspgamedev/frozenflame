@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://ending/win/goodend.gd" type="Script" id=1]
-[ext_resource path="res://utility/sfx.tscn" type="PackedScene" id=2]
-[ext_resource path="res://utility/sfx.gd" type="Script" id=3]
+[ext_resource path="res://fonts/p2start-16.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://utility/sfx.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ending/win/win.smp" type="Sample" id=4]
 
 [sub_resource type="SampleLibrary" id=1]
@@ -31,6 +31,7 @@ margin/left = 200.0
 margin/top = 160.0
 margin/right = 200.0
 margin/bottom = 160.0
+custom_fonts/font = ExtResource( 2 )
 text = "You have won!"
 align = 1
 valign = 1
@@ -38,18 +39,11 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="SFX" type="SamplePlayer2D" parent="." instance=ExtResource( 2 )]
+[node name="SFX" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 320, 0 )
 params/volume_db = -15.0
-params/pitch_scale = 1.0
-params/attenuation/min_distance = 1.0
-params/attenuation/max_distance = 2048.0
-params/attenuation/distance_exp = 1.0
-config/polyphony = 1
 config/samples = SubResource( 1 )
-config/pitch_random = 0.0
-script/script = ExtResource( 3 )
 sample = ExtResource( 4 )
 
 
