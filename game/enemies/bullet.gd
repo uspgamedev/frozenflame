@@ -11,9 +11,8 @@ var speed = 1
 var step
 var died = false
 
-
-onready var ice_view
-onready var fire_view
+onready var ice_view  = get_node("IceView")
+onready var fire_view = get_node("FireView")
 
 signal hit(object)
 signal on_death(bullet)
@@ -32,7 +31,7 @@ func setup(is_fire, enemy, time, direction, speed):
 	self.direction = deg2rad(direction)
 	self.speed = speed
 	self.died = false
-	
+
 	if is_fire:
 		ice_view.hide()
 		fire_view.show()
@@ -40,10 +39,6 @@ func setup(is_fire, enemy, time, direction, speed):
 		ice_view.show()
 		fire_view.hide()
 	set_fixed_process(true)
-	
-func _ready():
-	ice_view = get_node("IceView")
-	fire_view = get_node("FireView")
 
 func _fixed_process(delta):
 	var step = Vector2(speed * sin(direction), speed * cos(direction))
@@ -66,7 +61,6 @@ func auto_kill():
 
 func _enter_tree():
 	get_node("CollisionArea").set_enable_monitoring(true)
-	
+
 func _exit_tree():
 	get_node("CollisionArea").set_enable_monitoring(false)
-	

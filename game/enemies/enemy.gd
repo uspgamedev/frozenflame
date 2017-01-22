@@ -23,53 +23,50 @@ var all_bullets = []
 signal destroyed
 
 func _ready():
-	timer.set_wait_time(wave_delay)
-	if auto_start:
-		timer.start()
-	set_process(true)
-	
-	for bcount in range(bullet_quantity):
-		var bullet = Bullet.create()
-		bullet.connect("on_death",self,"on_bullet_death")
-		dead_bullets.push_back(bullet)
-		all_bullets.push_back(bullet)
+  timer.set_wait_time(wave_delay)
+  if auto_start:
+    timer.start()
+  set_process(true)
+
+  for bcount in range(bullet_quantity):
+    var bullet = Bullet.create()
+    bullet.connect("on_death",self,"on_bullet_death")
+    dead_bullets.push_back(bullet)
+    all_bullets.push_back(bullet)
 
 func start_waves():
-	timer.start()
-	
+  timer.start()
+
 func stop_waves():
-	timer.stop()
+  timer.stop()
 
 func fire_wave():
-	#printt("fire_wave", dead_bullets.size())
-	for bcount in range(bullet_quantity):
-		var degree = ( 360.0 / bullet_quantity ) * bcount
-		var bullet = null
-		if dead_bullets.empty():
-			bullet = Bullet.create()
-			bullet.connect("on_death",self,"on_bullet_death")
-			all_bullets.push_back(bullet)
-			#printt("creating bullet")
-		else:
-			bullet = dead_bullets[dead_bullets.size() - 1]
-			dead_bullets.pop_back()
-			#printt("respawn bullet")
-		
-		get_parent().add_child(bullet)
-		bullet.set_pos(get_pos())
-		bullet.setup(false, self, bullet_time, degree, bullet_speed)
+  for bcount in range(bullet_quantity):
+    var degree = ( 360.0 / bullet_quantity ) * bcount
+    var bullet = null
+    if dead_bullets.empty():
+      bullet = Bullet.create()
+      bullet.connect("on_death",self,"on_bullet_death")
+      all_bullets.push_back(bullet)
+    else:
+      bullet = dead_bullets[-1]
+      dead_bullets.pop_back()
+    get_parent().add_child(bullet)
+    bullet.set_pos(get_pos())
+    fire_bullet(bullet, degree)
+    bullet.setup(false, self, bullet_time, degree, bullet_speed)
 
 func on_bullet_death(bullet):
-	get_parent().call_deferred("remove_child",bullet)
-	dead_bullets.push_back(bullet)
+  get_parent().call_deferred("remove_child",bullet)
+  dead_bullets.push_back(bullet)
 
 func kill_all_bullets():
-	printt("kill all: size: ", all_bullets.size())
-	while all_bullets.size() > 0:
-		var bullet = all_bullets[all_bullets.size() - 1]
-		if not bullet.died:
-			bullet.auto_kill()
-		all_bullets.pop_back()
+  printt("kill all: size: ", all_bullets.size())
+  while all_bullets.size() > 0:
+    var bullet = all_bullets[all_bullets.size() - 1]
+    if not bullet.died:
+      bullet.auto_kill()
+    all_bullets.pop_back()
 
 func destroy():
   if not destroyed:
@@ -85,9 +82,6 @@ func destroy():
     set_collision_mask(0)
     shine.queue_free()
     anim.play("dead")
-
-func _on_Timer_timeout():
-	fire_wave()
 
 func _process(delta):
   var left = timer.get_time_left() / timer.get_wait_time()
