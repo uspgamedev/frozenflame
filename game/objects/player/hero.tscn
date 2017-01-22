@@ -109,11 +109,10 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 9, 10, 11, 10 ] }
 
-
-[sub_resource type="CircleShape2D" id=14]
+[sub_resource type="CircleShape2D" id=10]
 
 custom_solver_bias = 0.0
-extents = Vector2( 9, 4 )
+radius = 10.0
 
 [sub_resource type="RectangleShape2D" id=11]
 
@@ -131,10 +130,10 @@ extents = Vector2( 31.1169, 33.6211 )
 collision/layers = 1
 collision/mask = 2
 script/script = ExtResource( 2 )
+direction = 2
 bullet_speed = 200
 bullet_time = 0.3
 bullet_quantity = 36
-direction = 2
 
 [node name="sprite" parent="."]
 
@@ -171,7 +170,7 @@ script/script = null
 
 [node name="collision" parent="."]
 
-shape = SubResource( 14 )
+shape = SubResource( 10 )
 trigger = false
 _update_shape_index = 0
 script/script = ExtResource( 4 )
@@ -197,7 +196,8 @@ script/script = null
 
 [node name="hitbox" type="Area2D" parent="."]
 
-transform/pos = Vector2( 0, 22.1967 )
+transform/pos = Vector2( -0.424814, 4.57054 )
+transform/scale = Vector2( 0.538356, 0.449182 )
 input/pickable = true
 shapes/0/shape = SubResource( 11 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -250,3 +250,5 @@ config/samples = SubResource( 13 )
 sample = ExtResource( 8 )
 
 [connection signal="timeout" from="invincibility" to="." method="_on_invincibility_timeout"]
+
+
