@@ -57,15 +57,18 @@ func _on_teleport(path, entry_point):
   yield(get_tree(), "fixed_frame")
   remove_child(map)
   yield(get_tree(), "fixed_frame")
-  map_scene = load(path)
-  map = map_scene.instance()
-  add_child(map)
-  hero = map.get_node("Bodies/Hero")
-  var entry = map.get_node("Bodies/" + last_entry_point)
-  hero.set_pos(entry.get_pos())
-  music_player.change_theme()
-  connect_all()
-  fader.fade_in()
+  if entry_point != null:
+    map_scene = load(path)
+    map = map_scene.instance()
+    add_child(map)
+    hero = map.get_node("Bodies/Hero")
+    var entry = map.get_node("Bodies/" + last_entry_point)
+    hero.set_pos(entry.get_pos())
+    music_player.change_theme()
+    connect_all()
+    fader.fade_in()
+  else:
+    get_tree().change_scene(path)
 
 func _quit():
     get_tree().quit()
@@ -76,7 +79,7 @@ func get_hero():
 func _rumble():
 	if Input.get_connected_joysticks().empty():
 		return
-	
+
 	if Input.get_joy_name(Input.get_connected_joysticks()[0]).to_upper().similarity("PS4 CONTROLLER") > .7:
 		Input.start_joy_vibration(Input.get_connected_joysticks()[0], .6, .6, 1)
 

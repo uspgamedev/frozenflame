@@ -57,8 +57,7 @@ distance = 400.0
 
 editor/display_folded = true
 transform/pos = Vector2( 448, 24 )
-target_stage_path = "res://maps/stage05/map.tscn"
-target_stage_entry_point = "Entrance"
+target_stage_path = "res://ending/win/goodend.tscn"
 
 [node name="Entrance" type="Node2D" parent="Bodies"]
 
@@ -126,6 +125,8 @@ transform/pos = Vector2( 409.696, 307.883 )
 [node name="Node2D 2" type="Node2D" parent="PathFollowTower/Waypoints"]
 
 transform/pos = Vector2( 276.932, 311.955 )
+
+[connection signal="destroyed" from="Bodies/EnemyIce" to="Bodies/EnemyIce/DeathSFX" method="play"]
 
 [connection signal="timeout" from="Timer" to="PathFollowEnemy" method="_on_Timer_timeout"]
 
