@@ -74,6 +74,9 @@ func get_hero():
     return hero
 
 func _rumble():
+	if Input.get_connected_joysticks().empty():
+		return
+	
 	if Input.get_joy_name(Input.get_connected_joysticks()[0]).to_upper().similarity("PS4 CONTROLLER") > .7:
 		Input.start_joy_vibration(Input.get_connected_joysticks()[0], .6, .6, 1)
 
