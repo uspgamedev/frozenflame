@@ -223,7 +223,7 @@ sample = ExtResource( 7 )
 
 [node name="FailSFX" parent="." instance=ExtResource( 5 )]
 
-params/volume_db = -10.0
+params/volume_db = -15.0
 config/samples = SubResource( 13 )
 sample = ExtResource( 8 )
 

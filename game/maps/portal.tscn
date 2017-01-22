@@ -134,7 +134,7 @@ trigger = false
 
 [node name="SFX" parent="." instance=ExtResource( 3 )]
 
-params/volume_db = -10.0
+params/volume_db = -20.0
 config/samples = SubResource( 4 )
 sample = ExtResource( 4 )
 
