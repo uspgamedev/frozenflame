@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://enemies/bullet.gd" type="Script" id=1]
-[ext_resource path="res://enemies/particles.tex" type="Texture" id=2]
+[ext_resource path="res://objects/ice_particle.tex" type="Texture" id=2]
+[ext_resource path="res://objects/fire_particle.tex" type="Texture" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -23,8 +24,8 @@ tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4 ), "transitions":FloatArray( 1
 [node name="Bullet" type="KinematicBody2D"]
 
 input/pickable = false
-collision/layers = 2
-collision/mask = 1
+collision/layers = 0
+collision/mask = 0
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 
@@ -47,13 +48,13 @@ polygon = Vector2Array( -2, -2, -2, 2, 2, 2, 2, -2 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
-[node name="View" type="Sprite" parent="."]
+[node name="IceView" type="Sprite" parent="."]
 
 transform/pos = Vector2( -2.38419e-07, -1.78814e-07 )
 transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
-[node name="animation" type="AnimationPlayer" parent="View"]
+[node name="animation" type="AnimationPlayer" parent="IceView"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
@@ -63,6 +64,25 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "rotation"
+
+[node name="FireView" type="Sprite" parent="."]
+
+transform/pos = Vector2( -2.38419e-07, -1.78814e-07 )
+transform/scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="animation" type="AnimationPlayer" parent="FireView"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/rotation = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "rotation"
+
+[connection signal="area_enter" from="CollisionArea" to="." method="_on_CollisionArea_body_enter"]
 
 [connection signal="body_enter" from="CollisionArea" to="." method="_on_CollisionArea_body_enter"]
 

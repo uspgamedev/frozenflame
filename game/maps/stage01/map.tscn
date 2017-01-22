@@ -53,7 +53,6 @@ transform/pos = Vector2( 608, 576 )
 transform/pos = Vector2( 448, 320 )
 wave_delay = 1.0
 bullet_speed = 200.0
-distance = 600.0
 
 [node name="FallenFairy" parent="Bodies" instance=ExtResource( 5 )]
 
