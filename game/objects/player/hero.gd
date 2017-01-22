@@ -10,9 +10,10 @@ const DASHCOOLDOWN = 1.0
 
 var dead = false
 
-onready var sprite  = get_node("sprite")
-onready var hitbox  = get_node("hitbox")
-onready var sfx     = get_node("SFX")
+onready var sprite    = get_node("sprite")
+onready var hitbox    = get_node("hitbox")
+onready var death_sfx = get_node("DeathSFX")
+onready var dash_sfx  = get_node("DashSFX")
 
 func _move_to(dir):
   ._move_to(dir)
@@ -44,11 +45,12 @@ func _act(act):
   elif act == ACT.DASH and self.dashCooldown <= 0:
     self.dashTime = DASHTIME
     self.dashCooldown = DASHCOOLDOWN
+    dash_sfx.play()
 
 func kill():
   if not dead:
     dead = true
-    sfx.play()
+    death_sfx.play()
     self.emit_signal("died")
     set_process(false)
     animation.play("death")

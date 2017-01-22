@@ -48,10 +48,11 @@ func disconnect_all(detach_camera):
       portal.disconnect("teleport", self, "_on_teleport")
 
 func _on_teleport(path, entry_point):
+  disconnect_all(false)
   fader.fade_out()
   yield(fader, "done_fade_out")
+  hero.remove_child(cam)
   last_entry_point = entry_point
-  disconnect_all(true)
   yield(get_tree(), "fixed_frame")
   remove_child(map)
   yield(get_tree(), "fixed_frame")
@@ -61,6 +62,7 @@ func _on_teleport(path, entry_point):
   hero = map.get_node("Bodies/Hero")
   var entry = map.get_node("Bodies/" + last_entry_point)
   hero.set_pos(entry.get_pos())
+  music_player.change_theme()
   connect_all()
   fader.fade_in()
 
