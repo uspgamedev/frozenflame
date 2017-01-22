@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://maps/tilesets/coldhot-tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://objects/obstacles/FallenFairy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemies/enemy_ice.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/player/hero.tscn" type="PackedScene" id=4]
+[ext_resource path="res://maps/portal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/path_follow.tscn" type="PackedScene" id=6]
+
+[node name="Map" type="TileMap"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 0, 11, 1, 10, 2, 10, 3, 10, 4, 10, 5, 10, 6, 10, 7, 10, 8, 10, 9, 10, 10, 10, 11, 10, 12, 10, 15, 12, 65536, 9, 65537, 0, 65538, 0, 65539, 0, 65540, 0, 65541, 0, 65542, 0, 65543, 0, 65544, 0, 65545, 0, 65546, 0, 65547, 0, 65548, 0, 65549, 0, 65550, 0, 65551, 8, 131072, 9, 131073, 0, 131074, 0, 131075, 0, 131076, 0, 131077, 0, 131078, 0, 131079, 0, 131080, 0, 131081, 0, 131082, 0, 131083, 0, 131084, 0, 131085, 0, 131086, 0, 131087, 8, 196608, 9, 196609, 0, 196610, 0, 196611, 3, 196612, 7, 196613, 7, 196614, 7, 196615, 7, 196616, 7, 196617, 7, 196618, 7, 196619, 7, 196620, 7, 196621, 7, 196622, 7, 196623, 14, 262144, 9, 262145, 0, 262146, 0, 262147, 5, 262148, 10, 262149, 10, 262150, 10, 262151, 10, 262152, 10, 262153, 10, 262154, 10, 262155, 10, 262156, 10, 262157, 10, 262158, 10, 262159, 12, 327680, 9, 327681, 0, 327682, 0, 327683, 0, 327684, 0, 327685, 0, 327686, 0, 327687, 0, 327688, 0, 327689, 0, 327690, 0, 327691, 0, 327692, 0, 327693, 0, 327694, 0, 327695, 8, 393216, 9, 393217, 0, 393218, 0, 393219, 0, 393220, 0, 393221, 0, 393222, 0, 393223, 0, 393224, 0, 393225, 0, 393226, 0, 393227, 0, 393228, 0, 393229, 0, 393230, 0, 393231, 8, 458752, 9, 458753, 0, 458754, 0, 458755, 0, 458756, 0, 458757, 0, 458758, 0, 458759, 0, 458760, 0, 458761, 0, 458762, 0, 458763, 0, 458764, 0, 458765, 0, 458766, 0, 458767, 8, 524288, 9, 524289, 0, 524290, 0, 524291, 0, 524292, 0, 524293, 0, 524294, 0, 524295, 0, 524296, 0, 524297, 0, 524298, 0, 524299, 0, 524300, 0, 524301, 0, 524302, 0, 524303, 8, 589824, 9, 589825, 0, 589826, 0, 589827, 0, 589828, 0, 589829, 0, 589830, 0, 589831, 0, 589832, 0, 589833, 0, 589834, 0, 589835, 0, 589836, 0, 589837, 0, 589838, 0, 589839, 8, 655360, 9, 655361, 0, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 0, 655368, 0, 655369, 0, 655370, 0, 655371, 0, 655372, 0, 655373, 0, 655374, 0, 655375, 8, 720896, 9, 720897, 0, 720898, 0, 720899, 0, 720900, 0, 720901, 0, 720902, 0, 720903, 0, 720904, 0, 720905, 0, 720906, 0, 720907, 0, 720908, 0, 720909, 0, 720910, 0, 720911, 8, 786432, 13, 786433, 7, 786434, 7, 786435, 7, 786436, 7, 786437, 7, 786438, 7, 786439, 7, 786440, 4, 786441, 0, 786442, 0, 786443, 0, 786444, 3, 786445, 7, 786446, 7, 786447, 14, 851968, 11, 851969, 10, 851970, 10, 851971, 10, 851972, 10, 851973, 10, 851974, 10, 851975, 10, 851976, 6, 851977, 0, 851978, 0, 851979, 0, 851980, 8, 917504, 9, 917505, 0, 917506, 0, 917507, 0, 917508, 0, 917509, 0, 917510, 0, 917511, 0, 917512, 0, 917513, 0, 917514, 0, 917515, 0, 917516, 8, 983040, 9, 983041, 0, 983042, 0, 983043, 0, 983044, 0, 983045, 0, 983046, 0, 983047, 0, 983048, 0, 983049, 0, 983050, 0, 983051, 0, 983052, 8, 1048576, 13, 1048577, 7, 1048578, 7, 1048579, 7, 1048580, 7, 1048581, 7, 1048582, 7, 1048583, 7, 1048584, 7, 1048585, 7, 1048586, 7, 1048587, 7, 1048588, 14 )
+
+[node name="Bodies" type="YSort" parent="."]
+
+sort/enabled = true
+
+[node name="FallenFairy" parent="Bodies" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 99.275, 240.065 )
+
+[node name="FallenFairy 2" parent="Bodies" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 191.33, 313.168 )
+
+[node name="FallenFairy 3" parent="Bodies" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 311.362, 296.922 )
+
+[node name="EnemyIce" parent="Bodies" instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 178.695, 218.405 )
+
+[node name="hero" parent="Bodies" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 67.6875, 495.472 )
+
+[node name="Portal" parent="Bodies" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 448.289, 24.1968 )
+
+[node name="roof" type="TileMap" parent="."]
+
+visibility/visible = false
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 16, 2, 17, 2, 18, 2, 19, 2, 20, 2, 21, 2, 22, 2, 65552, 2, 65553, 2, 65554, 2, 65555, 2, 65556, 2, 65557, 2, 65558, 2, 131088, 2, 131089, 2, 131090, 2, 131091, 2, 131092, 2, 131093, 2, 131094, 2, 196624, 2, 196625, 2, 196626, 2, 196627, 2, 196628, 2, 196629, 2, 196630, 2, 262160, 2, 262161, 2, 262162, 2, 262163, 2, 262164, 2, 262165, 2, 262166, 2, 327696, 2, 327697, 2, 327698, 2, 327699, 2, 327700, 2, 327701, 2, 327702, 2, 393232, 2, 393233, 2, 393234, 2, 393235, 2, 393236, 2, 393237, 2, 393238, 2, 458768, 2, 458769, 2, 458770, 2, 458771, 2, 458772, 2, 458773, 2, 458774, 2, 524304, 2, 524305, 2, 524306, 2, 524307, 2, 524308, 2, 524309, 2, 524310, 2, 589840, 2, 589841, 2, 589842, 2, 589843, 2, 589844, 2, 589845, 2, 589846, 2, 655376, 2, 655377, 2, 655378, 2, 655379, 2, 655380, 2, 655381, 2, 655382, 2, 720912, 2, 720913, 2, 720914, 2, 720915, 2, 720916, 2, 720917, 2, 720918, 2, 786448, 2, 786449, 2, 786450, 2, 786451, 2, 786452, 2, 786453, 2, 786454, 2, 851981, 2, 851982, 2, 851983, 2, 851984, 2, 851985, 2, 851986, 2, 851987, 2, 851988, 2, 851989, 2, 851990, 2, 917517, 2, 917518, 2, 917519, 2, 917520, 2, 917521, 2, 917522, 2, 917523, 2, 917524, 2, 917525, 2, 917526, 2, 983053, 2, 983054, 2, 983055, 2, 983056, 2, 983057, 2, 983058, 2, 983059, 2, 983060, 2, 983061, 2, 983062, 2, 1048589, 2, 1048590, 2, 1048591, 2, 1048592, 2, 1048593, 2, 1048594, 2, 1048595, 2, 1048596, 2, 1048597, 2, 1048598, 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="PathFollow" parent="." instance=ExtResource( 6 )]
+
+object_path = NodePath("../Bodies/EnemyIce")
+
+[node name="Node2D" type="Node2D" parent="PathFollow/Waypoints"]
+
+transform/pos = Vector2( 447.164, 208.514 )
+
+[node name="Node2D 2" type="Node2D" parent="PathFollow/Waypoints"]
+
+transform/pos = Vector2( 281.005, 200.369 )
+
+[node name="Node2D 3" type="Node2D" parent="PathFollow/Waypoints"]
+
+transform/pos = Vector2( 176.748, 225.618 )
+transform/scale = Vector2( 1, 1 )
+
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="destroyed" from="Bodies/EnemyIce" to="Bodies/EnemyIce/DeathSFX" method="play"]
+
+[connection signal="timeout" from="Timer" to="PathFollow" method="_on_Timer_timeout"]
+
+
+[editable path="Bodies/Portal"]
+[editable path="PathFollow"]
