@@ -109,10 +109,10 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 9, 10, 11, 10 ] }
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=10]
 
 custom_solver_bias = 0.0
-radius = 6.0
+extents = Vector2( 9, 4 )
 
 [sub_resource type="RectangleShape2D" id=11]
 
@@ -238,7 +238,7 @@ sample = ExtResource( 7 )
 
 [node name="FailSFX" parent="." instance=ExtResource( 5 )]
 
-params/volume_db = -15.0
+params/volume_db = -17.5
 config/samples = SubResource( 13 )
 sample = ExtResource( 8 )
 
