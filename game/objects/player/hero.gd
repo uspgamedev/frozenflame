@@ -26,9 +26,9 @@ onready var pulse_sfx  = get_node("PulseSFX")
 
 export(float) var bullet_speed = 200
 export(float) var bullet_time = 0.3
-export(int) var bullet_quantity = 36
+export(int) var bullet_quantity = 72
 
-export(int) var pulse_charges = 1
+export(int) var pulse_charges = 0
 
 var dead_bullets = []
 var charges = []
@@ -36,6 +36,7 @@ var charges = []
 signal pulsed
 
 func _ready():
+  set_process(true)
   for i in range(pulse_charges):
     var orb = Charge.instance()
     orb.center = self
@@ -57,9 +58,6 @@ func _move_to(dir):
   elif direction == DIR.RIGHT:
     set_rotd(90)
     sprite.set_rotd(-90)
-
-func _ready():
-    set_process(true)
 
 func _fixed_process(delta):
   if pulse_cooldown > 0:

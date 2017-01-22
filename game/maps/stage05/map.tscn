@@ -51,6 +51,7 @@ transform/pos = Vector2( 325.209, 322.172 )
 transform/pos = Vector2( 178.695, 218.405 )
 wave_delay = 2.0
 bullet_speed = 80.0
+auto_start = true
 
 [node name="Portal" parent="Bodies" instance=ExtResource( 5 )]
 

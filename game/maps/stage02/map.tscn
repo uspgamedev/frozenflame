@@ -34,13 +34,13 @@ sort/enabled = true
 transform/pos = Vector2( -256, 64 )
 wave_delay = 3.0
 bullet_speed = 200.0
-distance = 600.0
+auto_start = true
 
 [node name="EnemyIce 2" parent="Bodies" instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 128, 128 )
 bullet_speed = 200.0
-distance = 600.0
+auto_start = true
 
 [node name="Entrance" type="Node2D" parent="Bodies"]
 

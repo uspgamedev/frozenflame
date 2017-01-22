@@ -190,7 +190,6 @@ editor/display_folded = true
 [node name="Trigger1" type="StaticBody2D" parent="Bodies/Triggers"]
 
 transform/pos = Vector2( 271.33, -25.7825 )
-transform/scale = Vector2( 1, 1 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -220,7 +219,6 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 451.807, -430.936 )
 transform/rot = 90.0
-transform/scale = Vector2( 1, 1 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -250,7 +248,6 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 1071.81, -433.391 )
 transform/rot = 90.0
-transform/scale = Vector2( 1, 1 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -279,7 +276,6 @@ _update_shape_index = 0
 [node name="Trigger4" type="StaticBody2D" parent="Bodies/Triggers"]
 
 transform/pos = Vector2( 1311.48, -347.473 )
-transform/scale = Vector2( 1, 1 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -308,7 +304,6 @@ _update_shape_index = 0
 [node name="Trigger5" type="StaticBody2D" parent="Bodies/Triggers"]
 
 transform/pos = Vector2( 1311.48, -89.7179 )
-transform/scale = Vector2( 1, 1 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1
@@ -342,6 +337,8 @@ transform/pos = Vector2( 172.853, 5.54019 )
 message = "Run little Fairy"
 
 [node name="Hero" parent="Bodies" instance=ExtResource( 5 )]
+
+pulse_charges = 2
 
 [node name="Portal" parent="Bodies" instance=ExtResource( 6 )]
 
