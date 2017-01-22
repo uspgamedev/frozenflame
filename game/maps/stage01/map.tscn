@@ -53,7 +53,7 @@ transform/pos = Vector2( 608, 576 )
 transform/pos = Vector2( 320, 304 )
 wave_delay = 1.0
 bullet_speed = 200.0
-auto_start = true
+distance = 300
 
 [node name="roof" type="TileMap" parent="."]
 
