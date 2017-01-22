@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://menu/main.gd" type="Script" id=1]
 [ext_resource path="res://effects/transition.tscn" type="PackedScene" id=2]
 [ext_resource path="res://fonts/p2start-32.fnt" type="BitmapFont" id=3]
 [ext_resource path="res://fonts/p2start-16.fnt" type="BitmapFont" id=4]
 [ext_resource path="res://menu/cursor.tex" type="Texture" id=5]
-[ext_resource path="res://effects/fader.tscn" type="PackedScene" id=6]
-[ext_resource path="res://maps/music/title.ogg" type="AudioStream" id=7]
+[ext_resource path="res://utility/sfx.tscn" type="PackedScene" id=6]
+[ext_resource path="res://menu/cursor.smp" type="Sample" id=7]
+[ext_resource path="res://effects/fader.tscn" type="PackedScene" id=8]
+[ext_resource path="res://maps/music/title.ogg" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=1]
 
@@ -19,6 +21,9 @@ tracks/0/path = NodePath(".:transform/pos")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( -1, -1 ), Vector2( 1, -1 ), Vector2( 1, 1 ), Vector2( -1, 1 ) ] }
+
+[sub_resource type="SampleLibrary" id=2]
+
 
 [node name="Menu" type="Control"]
 
@@ -107,11 +112,17 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = "idle"
 
-[node name="Fader" parent="." instance=ExtResource( 6 )]
+[node name="SFX" parent="List/PlayOption/cursor" instance=ExtResource( 6 )]
+
+params/volume_db = -10.0
+config/samples = SubResource( 2 )
+sample = ExtResource( 7 )
+
+[node name="Fader" parent="." instance=ExtResource( 8 )]
 
 [node name="MusicPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 7 )
+stream/stream = ExtResource( 9 )
 stream/play = true
 stream/loop = true
 stream/volume_db = -12.0
