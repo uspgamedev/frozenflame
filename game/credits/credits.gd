@@ -67,4 +67,4 @@ func start():
 
 func _input(e):
   if e.is_action_pressed("ui_accept"):
-    get_tree().queue_free()
+    get_tree().get_root().queue_free()
