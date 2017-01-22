@@ -34,10 +34,6 @@ var current_gamepad = INPUT_TYPE.KEYB
 var result_message
 
 func _ready():
-	for g in Input.get_connected_joysticks():
-		printt(g, Input.get_joy_guid(g), Input.get_joy_name(g))
-		#printt(g, Input.get_joy_guid(g))
-
 	if Input.get_connected_joysticks().empty():
 		current_gamepad = INPUT_TYPE.KEYB
 	else:
@@ -48,8 +44,6 @@ func _ready():
 			current_gamepad = INPUT_TYPE.XBOX
 		else:
 			current_gamepad = INPUT_TYPE.KEYB
-
-	printt(current_gamepad)
 
 	if current_gamepad == INPUT_TYPE.PS:
 		result_message = message % [ps_keys[action], action_text]

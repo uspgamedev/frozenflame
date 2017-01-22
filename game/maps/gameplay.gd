@@ -73,9 +73,17 @@ func _quit():
 func get_hero():
     return hero
 
+func _rumble():
+	if Input.get_joy_name(Input.get_connected_joysticks()[0]).to_upper().similarity("PS4 CONTROLLER") > .7:
+		Input.start_joy_vibration(Input.get_connected_joysticks()[0], .6, .6, 1)
+
+	if Input.get_joy_name(Input.get_connected_joysticks()[0]).to_upper().similarity("XINPUT GAMEPAD") > .7:
+		Input.start_joy_vibration(Input.get_connected_joysticks()[0], .6, .6, 1)
+
 func player_died():
   printt("died")
   disconnect_all(false)
+  _rumble()
   yield(hero.get_node("sprite/animation"), "finished")
   # death panel animation
   music_player.stop()
