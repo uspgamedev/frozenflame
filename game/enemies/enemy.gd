@@ -7,6 +7,7 @@ export(float) var wave_delay = 4
 export(float) var bullet_speed = 50
 export(float) var bullet_time = 3
 export(int) var bullet_quantity = 120
+export(bool) var auto_start = true
 
 onready var timer   = get_node("Timer")
 onready var view    = get_node("Sprite")
@@ -21,9 +22,21 @@ var dead_bullets = []
 signal destroyed
 
 func _ready():
-  timer.set_wait_time(wave_delay)
-  timer.start()
-  set_process(true)
+	timer.set_wait_time(wave_delay)
+	if auto_start:
+		timer.start()
+	set_process(true)
+	
+	for bcount in range(bullet_quantity):
+		var bullet = Bullet.create()
+		bullet.connect("on_death",self,"on_bullet_death")
+		dead_bullets.push_back(bullet)
+
+func start_waves():
+	timer.start()
+	
+func stop_waves():
+	timer.stop()
 
 func fire_wave():
 	#printt("fire_wave", dead_bullets.size())

@@ -45,11 +45,14 @@ func _ready():
 		else:
 			current_gamepad = INPUT_TYPE.KEYB
 
-	if current_gamepad == INPUT_TYPE.PS:
-		result_message = message % [ps_keys[action], action_text]
-	elif current_gamepad == INPUT_TYPE.XBOX:
-		result_message = message % [xinput_keys[action], action_text]
+	if message.find("%") > -1:
+		if current_gamepad == INPUT_TYPE.PS:
+			result_message = message % [ps_keys[action], action_text]
+		elif current_gamepad == INPUT_TYPE.XBOX:
+			result_message = message % [xinput_keys[action], action_text]
+		else:
+			result_message = message % [keyb_keys[action], action_text]
 	else:
-		result_message = message % [keyb_keys[action], action_text]
+		result_message = message
 
 	label.set_text(result_message)

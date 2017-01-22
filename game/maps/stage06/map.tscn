@@ -39,7 +39,8 @@ transform/pos = Vector2( 69.3789, 246.227 )
 
 transform/pos = Vector2( 1095.64, 319.793 )
 transform/rot = 270.0
-target_stage_path = "res://ending/win/goodend.tscn"
+target_stage_path = "res://maps/stage07/map.tscn"
+target_stage_entry_point = "Entrance"
 
 [node name="FairyPortal1" parent="Bodies" instance=ExtResource( 5 )]
 
@@ -67,6 +68,7 @@ transform/pos = Vector2( 867.589, 154.016 )
 wave_delay = 6.0
 bullet_speed = 100.0
 bullet_quantity = 100
+auto_start = true
 
 [node name="EnemyIce1" parent="Bodies" instance=ExtResource( 6 )]
 
@@ -75,6 +77,7 @@ wave_delay = 6.0
 bullet_speed = 100.0
 bullet_time = 100.0
 bullet_quantity = 100
+auto_start = true
 
 [node name="EnemyIce2" parent="Bodies" instance=ExtResource( 6 )]
 
@@ -83,6 +86,7 @@ wave_delay = 6.0
 bullet_speed = 100.0
 bullet_time = 100.0
 bullet_quantity = 100
+auto_start = true
 
 [node name="EnemyIce3" parent="Bodies" instance=ExtResource( 6 )]
 
@@ -91,6 +95,7 @@ wave_delay = 6.0
 bullet_speed = 100.0
 bullet_time = 100.0
 bullet_quantity = 100
+auto_start = true
 
 [node name="EnemyIce4" parent="Bodies" instance=ExtResource( 6 )]
 
@@ -99,6 +104,7 @@ wave_delay = 6.0
 bullet_speed = 100.0
 bullet_time = 100.0
 bullet_quantity = 100
+auto_start = true
 
 [node name="Paths" type="Node" parent="."]
 
