@@ -49,8 +49,7 @@ trigger = false
 
 [node name="View" type="Sprite" parent="."]
 
-transform/pos = Vector2( -2.38419e-07, -1.78814e-07 )
-transform/scale = Vector2( 2, 2 )
+transform/rot = 304.329
 texture = ExtResource( 2 )
 
 [node name="animation" type="AnimationPlayer" parent="View"]
