@@ -1,6 +1,7 @@
 
 extends Node2D
 
+const ACTIONS = preload("res://utility/actions.gd")
 const Portal = preload("res://maps/portal.gd")
 
 onready var cam = Camera2D.new()
@@ -102,7 +103,7 @@ func player_died():
   fail_sfx.play()
 
 func death_panel_action(act):
-  if act == 0:
+  if act == ACTIONS.ACCEPT or act == ACTIONS.PANIC:
     hero.remove_child(cam)
     remove_child(map)
     yield(get_tree(), "fixed_frame")
