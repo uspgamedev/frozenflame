@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://splash/splash.gd" type="Script" id=1]
 [ext_resource path="res://effects/transition.tscn" type="PackedScene" id=2]
 [ext_resource path="res://splash/logo_vertical_negative.tex" type="Texture" id=3]
-[ext_resource path="res://effects/fader.tscn" type="PackedScene" id=4]
+[ext_resource path="res://splash/GGJ00_GameCredits_SplashScreen.tex" type="Texture" id=4]
+[ext_resource path="res://effects/fader.tscn" type="PackedScene" id=5]
 
 [node name="splash" type="Node2D"]
 
@@ -48,8 +49,22 @@ margin/bottom = -1418.0
 texture = ExtResource( 3 )
 stretch_mode = 6
 
-[node name="Fader" parent="." instance=ExtResource( 4 )]
+[node name="ggj" type="TextureFrame" parent="images"]
 
-[connection signal="done_fade_out" from="Fader" to="Transition" method="go"]
+anchor/right = 1
+anchor/bottom = 1
+rect/scale = Vector2( 0.4444, 0.4444 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -120.0
+margin/top = 0.0
+margin/right = -1860.0
+margin/bottom = -1105.0
+texture = ExtResource( 4 )
+stretch_mode = 5
+
+[node name="Fader" parent="." instance=ExtResource( 5 )]
 
 

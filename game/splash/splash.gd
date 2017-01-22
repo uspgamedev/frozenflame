@@ -8,6 +8,7 @@ signal done_showing_all_images()
 onready var timer = get_node("timer")
 onready var images = get_node("images")
 onready var fader = get_node("Fader")
+onready var transition = get_node("Transition")
 
 func _ready():
   hide_all()
@@ -37,3 +38,4 @@ func play():
     fader.fade_out()
     yield(fader, "done_fade_out")
     img.hide()
+  transition.go()
