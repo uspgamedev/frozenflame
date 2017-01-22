@@ -19,12 +19,13 @@ var dead_bullets = []
 signal destroyed
 
 func _ready():
-	timer.set_wait_time(wave_delay)
+  timer.set_wait_time(wave_delay)
+  timer.start()
 
 func fire_wave():
 	#printt("fire_wave", dead_bullets.size())
 	for bcount in range(0,bullet_quantity):
-		var degree = 360.0 / bullet_quantity * bcount
+		var degree = (360.0 / bullet_quantity) * bcount
 		var bullet = null
 		if dead_bullets.empty():
 			bullet = Bullet.create(self, distance, degree, bullet_speed)
