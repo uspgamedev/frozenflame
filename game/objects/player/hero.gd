@@ -1,6 +1,8 @@
 
 extends "res://objects/monster.gd"
 
+const Charge = preload("res://objects/player/charge_orb.tscn")
+
 const DIR = preload("res://utility/directions.gd")
 const ACT = preload("res://utility/actions.gd")
 
@@ -23,7 +25,20 @@ export(float) var bullet_speed = 200
 export(float) var bullet_time = 0.3
 export(int) var bullet_quantity = 36
 
+export(int) var pulse_charges = 1
+
 var dead_bullets = []
+var charges = []
+
+signal pulsed
+
+func _ready():
+  for i in range(pulse_charges):
+    var orb = Charge.instance()
+    orb.center = self
+    orb.time = i * (2.0 * PI / pulse_charges)
+    charges.append(orb)
+    get_parent().call_deferred("add_child", orb)
 
 func _move_to(dir):
   ._move_to(dir)
@@ -56,9 +71,14 @@ func _act(act):
     self.dashTime = DASHTIME
     self.dashCooldown = DASHCOOLDOWN
     dash_sfx.play()
-  elif act == ACT.PANIC:
+  elif act == ACT.PANIC and pulse_charges > 0:
     self.fire_wave()
     pulse_sfx.play()
+    pulse_charges -= 1
+    var orb = charges[-1]
+    orb.queue_free()
+    charges.pop_back()
+    emit_signal("pulsed")
 
 func kill():
   if not dead:

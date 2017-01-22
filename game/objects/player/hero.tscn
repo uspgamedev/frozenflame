@@ -10,7 +10,7 @@
 [ext_resource path="res://objects/player/fail.smp" type="Sample" id=8]
 [ext_resource path="res://objects/player/firewave.smp" type="Sample" id=9]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=15]
 
 resource/name = "death"
 length = 0.6
@@ -22,7 +22,7 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.3, 0.4, 0.5 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":1, "values":[ 13, 13, 14, 13, 14 ] }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=16]
 
 length = 0.8
 loop = true
@@ -33,7 +33,7 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 0, 1, 2, 1 ] }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=17]
 
 length = 0.8
 loop = true
@@ -44,7 +44,7 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 0, 1, 2, 1 ] }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=18]
 
 length = 0.8
 loop = true
@@ -55,7 +55,7 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 6, 7, 8, 7 ] }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=19]
 
 length = 0.8
 loop = true
@@ -66,7 +66,7 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 6, 7, 8, 7 ] }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=20]
 
 length = 0.8
 loop = true
@@ -77,7 +77,7 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 3, 4, 5, 4 ] }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=21]
 
 length = 0.8
 loop = true
@@ -88,7 +88,7 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 3, 4, 5, 4 ] }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=22]
 
 length = 0.8
 loop = true
@@ -99,7 +99,7 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 9, 10, 11, 10 ] }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=23]
 
 length = 0.8
 loop = true
@@ -110,20 +110,20 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 9, 10, 11, 10 ] }
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=24]
 
 custom_solver_bias = 0.0
 radius = 10.0
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=25]
 
 custom_solver_bias = 0.0
 extents = Vector2( 31.1169, 33.6211 )
 
-[sub_resource type="SampleLibrary" id=12]
+[sub_resource type="SampleLibrary" id=26]
 
 
-[sub_resource type="SampleLibrary" id=13]
+[sub_resource type="SampleLibrary" id=27]
 
 
 [sub_resource type="SampleLibrary" id=14]
@@ -138,6 +138,7 @@ direction = 2
 bullet_speed = 200
 bullet_time = 0.3
 bullet_quantity = 36
+pulse_charges = 1
 
 [node name="sprite" parent="."]
 
@@ -153,15 +154,15 @@ frame = 1
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/death = SubResource( 1 )
-anims/down_idle = SubResource( 2 )
-anims/down_moving = SubResource( 3 )
-anims/left_idle = SubResource( 4 )
-anims/left_moving = SubResource( 5 )
-anims/right_idle = SubResource( 6 )
-anims/right_moving = SubResource( 7 )
-anims/up_idle = SubResource( 8 )
-anims/up_moving = SubResource( 9 )
+anims/death = SubResource( 15 )
+anims/down_idle = SubResource( 16 )
+anims/down_moving = SubResource( 17 )
+anims/left_idle = SubResource( 18 )
+anims/left_moving = SubResource( 19 )
+anims/right_idle = SubResource( 20 )
+anims/right_moving = SubResource( 21 )
+anims/up_idle = SubResource( 22 )
+anims/up_moving = SubResource( 23 )
 next/down_moving = ""
 next/left_moving = ""
 next/right_moving = ""
@@ -174,7 +175,8 @@ script/script = null
 
 [node name="collision" parent="."]
 
-shape = SubResource( 10 )
+editor/display_folded = true
+shape = SubResource( 24 )
 trigger = false
 _update_shape_index = 0
 script/script = ExtResource( 4 )
@@ -200,10 +202,11 @@ script/script = null
 
 [node name="hitbox" type="Area2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( -0.424814, 4.57054 )
 transform/scale = Vector2( 0.538356, 0.449182 )
 input/pickable = true
-shapes/0/shape = SubResource( 11 )
+shapes/0/shape = SubResource( 25 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -215,7 +218,7 @@ collision/mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 
-shape = SubResource( 11 )
+shape = SubResource( 25 )
 trigger = false
 _update_shape_index = 0
 
@@ -239,7 +242,7 @@ invert/border = 100.0
 [node name="DeathSFX" parent="." instance=ExtResource( 5 )]
 
 params/volume_db = -20.0
-config/samples = SubResource( 12 )
+config/samples = SubResource( 26 )
 sample = ExtResource( 6 )
 
 [node name="DashSFX" parent="." instance=ExtResource( 5 )]
@@ -250,7 +253,7 @@ sample = ExtResource( 7 )
 [node name="FailSFX" parent="." instance=ExtResource( 5 )]
 
 params/volume_db = -17.5
-config/samples = SubResource( 13 )
+config/samples = SubResource( 27 )
 sample = ExtResource( 8 )
 
 [node name="PulseSFX" parent="." instance=ExtResource( 5 )]
