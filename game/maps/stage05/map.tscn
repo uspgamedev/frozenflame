@@ -51,13 +51,13 @@ transform/pos = Vector2( 325.209, 322.172 )
 transform/pos = Vector2( 178.695, 218.405 )
 wave_delay = 2.0
 bullet_speed = 80.0
-distance = 400.0
 
 [node name="Portal" parent="Bodies" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 448, 24 )
-target_stage_path = "res://ending/win/goodend.tscn"
+target_stage_path = "res://maps/stage06/map.tscn"
+target_stage_entry_point = "Entrance"
 
 [node name="Entrance" type="Node2D" parent="Bodies"]
 
