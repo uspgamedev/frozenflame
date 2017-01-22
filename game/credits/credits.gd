@@ -1,7 +1,8 @@
 
 extends Node2D
 
-const TIME_PER_SLIDE = 5.0
+const BGM_FADE = 3.0
+const TIME_PER_SLIDE = 7.5
 
 onready var tween = get_node("tween")
 onready var timer = get_node("timer")
@@ -24,7 +25,7 @@ func hide_all():
     slide.hide()
 
 func start():
-  var fading_bgm = TIME_PER_SLIDE / 2
+  var fading_bgm = BGM_FADE
   var fading_time = TIME_PER_SLIDE * 1 / 5
   var waiting_time = TIME_PER_SLIDE * 3 / 5
 

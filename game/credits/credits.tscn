@@ -2,7 +2,7 @@
 
 [ext_resource path="res://credits/credits.gd" type="Script" id=1]
 [ext_resource path="res://fonts/runescape-32.fnt" type="BitmapFont" id=2]
-[ext_resource path="res://maps/music/title.ogg" type="AudioStream" id=3]
+[ext_resource path="res://credits/credits.ogg" type="AudioStream" id=3]
 
 [node name="credits" type="Node2D"]
 
@@ -119,8 +119,8 @@ autostart = false
 [node name="music" type="StreamPlayer" parent="."]
 
 stream/stream = ExtResource( 3 )
-stream/play = false
-stream/loop = true
+stream/play = true
+stream/loop = false
 stream/volume_db = 0.0
 stream/autoplay = true
 stream/paused = false
