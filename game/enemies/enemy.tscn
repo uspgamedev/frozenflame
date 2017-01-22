@@ -57,7 +57,7 @@ script/script = ExtResource( 1 )
 type = 0
 wave_delay = 4
 bullet_speed = 0.1
-bullet_time = 3
+bullet_time = 7
 bullet_quantity = 120
 auto_start = true
 
