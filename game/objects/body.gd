@@ -70,6 +70,7 @@ func _apply_speed(delta):
         self.dashCooldown -= delta
 
     var motion = move( motionScale )
+    
     if is_colliding():
         var collider = get_collider()
         var normal = get_collision_normal()
