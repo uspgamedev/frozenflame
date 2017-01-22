@@ -7,6 +7,8 @@
 script/script = ExtResource( 1 )
 object_path = null
 speed = 50.0
+loop = false
+auto_start = true
 
 [node name="Waypoints" type="Node" parent="."]
 

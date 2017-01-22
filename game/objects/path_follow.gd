@@ -1,5 +1,7 @@
 extends Node
 
+const Enemy = preload("res://enemies/enemy.gd")
+
 onready var waypoints = get_node("Waypoints").get_children()
 
 export(NodePath) var object_path
@@ -39,6 +41,9 @@ func get_next_waypoint():
 	return waypoints[current_wp]
 	
 func _fixed_process(delta):
+	if object extends Enemy and object.destroyed:
+		set_fixed_process(false)
+		return
 	var target = get_next_waypoint()
 	var direction = (target.get_pos() - object.get_pos()).normalized() * speed * delta
 	object.move(direction)

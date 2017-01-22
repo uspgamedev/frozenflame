@@ -56,6 +56,8 @@ distance = 400.0
 
 editor/display_folded = true
 transform/pos = Vector2( 448.289, 24.1968 )
+target_stage_path = "res://maps/stage05/map.tscn"
+target_stage_entry_point = "Entrance"
 
 [node name="Entrance" type="Node2D" parent="Bodies"]
 
@@ -85,7 +87,6 @@ __meta__ = { "_edit_lock_":true }
 
 object_path = NodePath("../Bodies/EnemyIce")
 loop = true
-auto_start = true
 
 [node name="Node2D" type="Node2D" parent="PathFollowEnemy/Waypoints"]
 
@@ -114,7 +115,6 @@ autostart = true
 
 object_path = NodePath("../Bodies/FallenFairy 3")
 loop = true
-auto_start = true
 
 [node name="Node2D" type="Node2D" parent="PathFollowTower/Waypoints"]
 

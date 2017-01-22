@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://menu/main.gd" type="Script" id=1]
 [ext_resource path="res://effects/transition.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://fonts/p2start-16.fnt" type="BitmapFont" id=4]
 [ext_resource path="res://menu/cursor.tex" type="Texture" id=5]
 [ext_resource path="res://effects/fader.tscn" type="PackedScene" id=6]
+[ext_resource path="res://maps/music/title.ogg" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=1]
 
@@ -107,5 +108,16 @@ blend_times = [  ]
 autoplay = "idle"
 
 [node name="Fader" parent="." instance=ExtResource( 6 )]
+
+[node name="MusicPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 7 )
+stream/play = true
+stream/loop = true
+stream/volume_db = -12.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 
