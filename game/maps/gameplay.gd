@@ -61,6 +61,7 @@ func _on_teleport(path, entry_point):
   hero = map.get_node("Bodies/Hero")
   var entry = map.get_node("Bodies/" + last_entry_point)
   hero.set_pos(entry.get_pos())
+  music_player.change_theme()
   connect_all()
   fader.fade_in()
 
