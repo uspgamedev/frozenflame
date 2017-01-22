@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://objects/path_follow.gd" type="Script" id=1]
+
+[node name="PathFollow" type="Node"]
+
+script/script = ExtResource( 1 )
+object_path = null
+speed = 50.0
+loop = false
+auto_start = true
+
+[node name="Waypoints" type="Node" parent="."]
+
+

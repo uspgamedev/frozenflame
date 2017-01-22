@@ -12,9 +12,11 @@ const DASHCOOLDOWN = 1.0
 
 var dead = false
 
-onready var sprite  = get_node("sprite")
-onready var hitbox  = get_node("hitbox")
-onready var sfx     = get_node("SFX")
+onready var sprite    = get_node("sprite")
+onready var hitbox    = get_node("hitbox")
+onready var collision = get_node("collision")
+onready var death_sfx = get_node("DeathSFX")
+onready var dash_sfx  = get_node("DashSFX")
 
 export(float) var bullet_speed = 200
 export(float) var bullet_time = 0.3
@@ -52,13 +54,14 @@ func _act(act):
   elif act == ACT.DASH and self.dashCooldown <= 0:
     self.dashTime = DASHTIME
     self.dashCooldown = DASHCOOLDOWN
+    dash_sfx.play()
   elif act == ACT.PANIC:
     self.fire_wave()
 
 func kill():
   if not dead:
     dead = true
-    sfx.play()
+    death_sfx.play()
     self.emit_signal("died")
     set_process(false)
     animation.play("death")
@@ -91,4 +94,3 @@ func fire_wave():
 func on_bullet_death(bullet):
   get_parent().call_deferred("remove_child",bullet)
   dead_bullets.push_back(bullet)
-

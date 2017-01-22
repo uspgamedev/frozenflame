@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://maps/portal.gd" type="Script" id=1]
 [ext_resource path="res://maps/tilesets/sample_walls.tex" type="Texture" id=2]
+[ext_resource path="res://utility/sfx.tscn" type="PackedScene" id=3]
+[ext_resource path="res://maps/teleport.smp" type="Sample" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -17,6 +19,9 @@ points = Vector2Array( -16, -24, -16, 8, -32, 8, -32, -24 )
 
 custom_solver_bias = 0.0
 points = Vector2Array( -16, -24, -16, 8, -32, 8, -32, -24 )
+
+[sub_resource type="SampleLibrary" id=4]
+
 
 [node name="Portal" type="Area2D"]
 
@@ -63,6 +68,7 @@ region_rect = Rect2( 0, 96, 96, 32 )
 
 [node name="header" type="Node2D" parent="View"]
 
+editor/display_folded = true
 transform/pos = Vector2( -16, -4 )
 z/z = 10
 
@@ -96,6 +102,7 @@ _update_shape_index = 0
 
 [node name="solid" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 48, 0 )
@@ -124,6 +131,12 @@ build_mode = 0
 polygon = Vector2Array( -16, -24, -16, 8, -32, 8, -32, -24 )
 shape_range = Vector2( 1, 1 )
 trigger = false
+
+[node name="SFX" parent="." instance=ExtResource( 3 )]
+
+params/volume_db = -20.0
+config/samples = SubResource( 4 )
+sample = ExtResource( 4 )
 
 [connection signal="body_enter" from="." to="." method="_on_body_enter"]
 

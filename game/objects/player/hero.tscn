@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=1]
+[gd_scene load_steps=22 format=1]
 
 [ext_resource path="res://objects/monster.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/player/hero.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://utility/collisionfix.gd" type="Script" id=4]
 [ext_resource path="res://utility/sfx.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/player/death.smp" type="Sample" id=6]
+[ext_resource path="res://objects/player/dash.smp" type="Sample" id=7]
+[ext_resource path="res://objects/player/fail.smp" type="Sample" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -107,7 +109,8 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 9, 10, 11, 10 ] }
 
-[sub_resource type="RectangleShape2D" id=10]
+
+[sub_resource type="CircleShape2D" id=14]
 
 custom_solver_bias = 0.0
 extents = Vector2( 9, 4 )
@@ -120,6 +123,9 @@ extents = Vector2( 31.1169, 33.6211 )
 [sub_resource type="SampleLibrary" id=12]
 
 
+[sub_resource type="SampleLibrary" id=13]
+
+
 [node name="hero" instance=ExtResource( 1 )]
 
 collision/layers = 1
@@ -128,6 +134,7 @@ script/script = ExtResource( 2 )
 bullet_speed = 200
 bullet_time = 0.3
 bullet_quantity = 36
+direction = 2
 
 [node name="sprite" parent="."]
 
@@ -136,7 +143,7 @@ texture = ExtResource( 3 )
 offset = Vector2( 0, -20 )
 flip_h = true
 vframes = 5
-frame = 14
+frame = 1
 
 [node name="animation" parent="sprite"]
 
@@ -164,10 +171,25 @@ script/script = null
 
 [node name="collision" parent="."]
 
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 trigger = false
 _update_shape_index = 0
 script/script = ExtResource( 4 )
+
+[node name="collisionbox" type="Polygon2D" parent="collision"]
+
+visibility/visible = false
+polygon = Vector2Array( -8, -4, 8, -4, 8, 4, -8, 4 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 0.644824 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
 
 [node name="invincibility" parent="."]
 
@@ -210,12 +232,21 @@ texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
 
-[node name="SFX" parent="." instance=ExtResource( 5 )]
+[node name="DeathSFX" parent="." instance=ExtResource( 5 )]
 
 params/volume_db = -20.0
 config/samples = SubResource( 12 )
 sample = ExtResource( 6 )
 
+[node name="DashSFX" parent="." instance=ExtResource( 5 )]
+
+params/volume_db = -20.0
+sample = ExtResource( 7 )
+
+[node name="FailSFX" parent="." instance=ExtResource( 5 )]
+
+params/volume_db = -17.5
+config/samples = SubResource( 13 )
+sample = ExtResource( 8 )
+
 [connection signal="timeout" from="invincibility" to="." method="_on_invincibility_timeout"]
-
-

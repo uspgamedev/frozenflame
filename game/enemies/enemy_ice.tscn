@@ -28,7 +28,7 @@ sample = ExtResource( 4 )
 
 [node name="DeathSFX" parent="." instance=ExtResource( 3 )]
 
-params/volume_db = -20.0
+params/volume_db = -15.0
 config/samples = SubResource( 2 )
 sample = ExtResource( 5 )
 
