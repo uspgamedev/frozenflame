@@ -5,7 +5,7 @@ const Player = preload("res://objects/player/hero.gd")
 
 var is_fire = false
 var enemy
-var distance = 100
+var time = 100
 var direction = 0
 var speed = 1
 var step
@@ -24,11 +24,11 @@ static func create():
 	var bullet = BulletScene.instance()
 	return bullet
 
-func setup(is_fire, enemy, distance, direction, speed):
+func setup(is_fire, enemy, time, direction, speed):
 	self.is_fire = is_fire
 	self.enemy = enemy
-	self.distance = distance
-	self.direction = direction
+	self.time = time
+	self.direction = deg2rad(direction)
 	self.speed = speed
 	
 	if is_fire:
@@ -46,12 +46,16 @@ func _ready():
 func _fixed_process(delta):
 	var step = Vector2(speed * sin(direction), speed * cos(direction))
 	move(step * delta)
-	if self.get_pos().distance_to(enemy.get_pos()) > distance:
+	self.time -= delta
+	if self.time <= 0:
 		emit_signal("on_death", self)
 
 func _on_CollisionArea_body_enter( body ):
-	emit_signal("on_death", self)
-	if body extends Player:
+	# Do not kill fire bullets when they hit the player
+	if not (is_fire and (body extends Player)):
+		emit_signal("on_death", self)
+
+	if ( not is_fire ) and ( body extends Player ):
 		body.kill()
 
 func _enter_tree():

@@ -45,19 +45,20 @@ tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "updat
 
 [node name="Enemy" type="KinematicBody2D"]
 
+transform/pos = Vector2( 0, -0.291988 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-collision/layers = 2
+collision/layers = 4
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 type = 0
 wave_delay = 4
 bullet_speed = 0.1
-distance = 300
-bullet_quantity = 720
+bullet_time = 3
+bullet_quantity = 120
 
 [node name="Timer" type="Timer" parent="."]
 

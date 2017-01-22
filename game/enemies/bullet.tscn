@@ -24,8 +24,8 @@ tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4 ), "transitions":FloatArray( 1
 [node name="Bullet" type="KinematicBody2D"]
 
 input/pickable = false
-collision/layers = 2
-collision/mask = 1
+collision/layers = 0
+collision/mask = 0
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 
@@ -81,6 +81,8 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "rotation"
+
+[connection signal="area_enter" from="CollisionArea" to="." method="_on_CollisionArea_body_enter"]
 
 [connection signal="body_enter" from="CollisionArea" to="." method="_on_CollisionArea_body_enter"]
 

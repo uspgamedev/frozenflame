@@ -13,9 +13,10 @@ const DASHCOOLDOWN = 1.0
 onready var sprite = get_node("sprite")
 onready var hitbox = get_node("hitbox")
 
-export(float) var bullet_speed = 80
-export(float) var distance = 30
-export(int) var bullet_quantity = 80
+export(float) var bullet_speed = 200
+export(float) var bullet_time = 0.3
+export(int) var bullet_quantity = 36
+
 var dead_bullets = []
 
 func _move_to(dir):
@@ -48,6 +49,8 @@ func _act(act):
   elif act == ACT.DASH and self.dashCooldown <= 0:
     self.dashTime = DASHTIME
     self.dashCooldown = DASHCOOLDOWN
+  elif act == ACT.PANIC:
+    self.fire_wave()
 
 func kill():
   self.emit_signal("died")
@@ -58,24 +61,28 @@ func kill():
   add_child(death_slash)
 
 func fire_wave():
-	#printt("fire_wave", dead_bullets.size())
-	for bcount in range(0,bullet_quantity):
-		var degree = 360/bullet_quantity * bcount
-		var bullet = null
-		if dead_bullets.empty():
-			bullet = Bullet.create()
-			bullet.connect("on_death",self,"on_bullet_death")
-			#printt("creating bullet")
-		else:
-			bullet = dead_bullets[dead_bullets.size() - 1]
-			dead_bullets.pop_back()
-		
-		get_parent().add_child(bullet)
-		bullet.set_pos(get_pos())
-		bullet.setup(true, self, distance, degree, bullet_speed)
+  for bcount in range(0,bullet_quantity):
+    var degree = ( 360.0 / bullet_quantity ) * bcount
+    var bullet = null
+    if dead_bullets.empty():
+      bullet = Bullet.create()
+      bullet.connect("on_death",self,"on_bullet_death")
+    else:
+      bullet = dead_bullets[dead_bullets.size() - 1]
+      dead_bullets.pop_back()
+
+    get_parent().add_child(bullet)
+
+    var area = bullet.get_node("CollisionArea")
+    area.set_layer_mask_bit(0, true)
+    area.set_layer_mask_bit(1, false)
+    area.set_collision_mask_bit(0, false)
+    area.set_collision_mask_bit(1, true)
+
+    bullet.set_pos(get_pos())
+    bullet.setup(true, self, bullet_time, degree, bullet_speed)
 
 func on_bullet_death(bullet):
-	yield(get_tree(), "fixed_frame")
-	get_parent().call_deferred("remove_child",bullet)
-	dead_bullets.push_back(bullet)
+  get_parent().call_deferred("remove_child",bullet)
+  dead_bullets.push_back(bullet)
 
