@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://maps/tilesets/coldhot-tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://objects/obstacles/FallenFairy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://enemies/enemy_ice.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/player/hero.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/player/hero.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/obstacles/FallenFairy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/enemy_ice.tscn" type="PackedScene" id=4]
 [ext_resource path="res://maps/portal.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/path_follow.tscn" type="PackedScene" id=6]
 
@@ -29,30 +29,37 @@ tile_data = IntArray( 0, 11, 1, 10, 2, 10, 3, 10, 4, 10, 5, 10, 6, 10, 7, 10, 8,
 
 sort/enabled = true
 
-[node name="FallenFairy" parent="Bodies" instance=ExtResource( 2 )]
+[node name="Hero" parent="Bodies" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 67.6875, 495.472 )
+
+[node name="FallenFairy" parent="Bodies" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 99.275, 240.065 )
 
-[node name="FallenFairy 2" parent="Bodies" instance=ExtResource( 2 )]
+[node name="FallenFairy 2" parent="Bodies" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 191.33, 313.168 )
 
-[node name="FallenFairy 3" parent="Bodies" instance=ExtResource( 2 )]
+[node name="FallenFairy 3" parent="Bodies" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 311.362, 296.922 )
+transform/pos = Vector2( 325.209, 322.172 )
 
-[node name="EnemyIce" parent="Bodies" instance=ExtResource( 3 )]
+[node name="EnemyIce" parent="Bodies" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 178.695, 218.405 )
-
-[node name="hero" parent="Bodies" instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 67.6875, 495.472 )
+wave_delay = 3.0
+bullet_speed = 60.0
+distance = 400.0
 
 [node name="Portal" parent="Bodies" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 448.289, 24.1968 )
+
+[node name="Entrance" type="Node2D" parent="Bodies"]
+
+transform/pos = Vector2( 63.5314, 479.743 )
 
 [node name="roof" type="TileMap" parent="."]
 
@@ -74,22 +81,27 @@ occluder/light_mask = 1
 tile_data = IntArray( 16, 2, 17, 2, 18, 2, 19, 2, 20, 2, 21, 2, 22, 2, 65552, 2, 65553, 2, 65554, 2, 65555, 2, 65556, 2, 65557, 2, 65558, 2, 131088, 2, 131089, 2, 131090, 2, 131091, 2, 131092, 2, 131093, 2, 131094, 2, 196624, 2, 196625, 2, 196626, 2, 196627, 2, 196628, 2, 196629, 2, 196630, 2, 262160, 2, 262161, 2, 262162, 2, 262163, 2, 262164, 2, 262165, 2, 262166, 2, 327696, 2, 327697, 2, 327698, 2, 327699, 2, 327700, 2, 327701, 2, 327702, 2, 393232, 2, 393233, 2, 393234, 2, 393235, 2, 393236, 2, 393237, 2, 393238, 2, 458768, 2, 458769, 2, 458770, 2, 458771, 2, 458772, 2, 458773, 2, 458774, 2, 524304, 2, 524305, 2, 524306, 2, 524307, 2, 524308, 2, 524309, 2, 524310, 2, 589840, 2, 589841, 2, 589842, 2, 589843, 2, 589844, 2, 589845, 2, 589846, 2, 655376, 2, 655377, 2, 655378, 2, 655379, 2, 655380, 2, 655381, 2, 655382, 2, 720912, 2, 720913, 2, 720914, 2, 720915, 2, 720916, 2, 720917, 2, 720918, 2, 786448, 2, 786449, 2, 786450, 2, 786451, 2, 786452, 2, 786453, 2, 786454, 2, 851981, 2, 851982, 2, 851983, 2, 851984, 2, 851985, 2, 851986, 2, 851987, 2, 851988, 2, 851989, 2, 851990, 2, 917517, 2, 917518, 2, 917519, 2, 917520, 2, 917521, 2, 917522, 2, 917523, 2, 917524, 2, 917525, 2, 917526, 2, 983053, 2, 983054, 2, 983055, 2, 983056, 2, 983057, 2, 983058, 2, 983059, 2, 983060, 2, 983061, 2, 983062, 2, 1048589, 2, 1048590, 2, 1048591, 2, 1048592, 2, 1048593, 2, 1048594, 2, 1048595, 2, 1048596, 2, 1048597, 2, 1048598, 2 )
 __meta__ = { "_edit_lock_":true }
 
-[node name="PathFollow" parent="." instance=ExtResource( 6 )]
+[node name="PathFollowEnemy" parent="." instance=ExtResource( 6 )]
 
 object_path = NodePath("../Bodies/EnemyIce")
+loop = true
+auto_start = true
 
-[node name="Node2D" type="Node2D" parent="PathFollow/Waypoints"]
+[node name="Node2D" type="Node2D" parent="PathFollowEnemy/Waypoints"]
 
 transform/pos = Vector2( 447.164, 208.514 )
 
-[node name="Node2D 2" type="Node2D" parent="PathFollow/Waypoints"]
+[node name="Node2D 2" type="Node2D" parent="PathFollowEnemy/Waypoints"]
 
 transform/pos = Vector2( 281.005, 200.369 )
 
-[node name="Node2D 3" type="Node2D" parent="PathFollow/Waypoints"]
+[node name="Node2D 3" type="Node2D" parent="PathFollowEnemy/Waypoints"]
 
-transform/pos = Vector2( 176.748, 225.618 )
-transform/scale = Vector2( 1, 1 )
+transform/pos = Vector2( 177.563, 247.61 )
+
+[node name="Node2D 4" type="Node2D" parent="PathFollowEnemy/Waypoints"]
+
+transform/pos = Vector2( 325.802, 267.158 )
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -98,10 +110,25 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
+[node name="PathFollowTower" parent="." instance=ExtResource( 6 )]
+
+object_path = NodePath("../Bodies/FallenFairy 3")
+loop = true
+auto_start = true
+
+[node name="Node2D" type="Node2D" parent="PathFollowTower/Waypoints"]
+
+transform/pos = Vector2( 409.696, 307.883 )
+
+[node name="Node2D 2" type="Node2D" parent="PathFollowTower/Waypoints"]
+
+transform/pos = Vector2( 276.932, 311.955 )
+
 [connection signal="destroyed" from="Bodies/EnemyIce" to="Bodies/EnemyIce/DeathSFX" method="play"]
 
-[connection signal="timeout" from="Timer" to="PathFollow" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer" to="PathFollowEnemy" method="_on_Timer_timeout"]
 
 
 [editable path="Bodies/Portal"]
-[editable path="PathFollow"]
+[editable path="PathFollowEnemy"]
+[editable path="PathFollowTower"]
