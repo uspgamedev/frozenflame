@@ -1,6 +1,6 @@
 extends Sprite
 
-onready var time = 0
+var time = 0
 
 var center
 
