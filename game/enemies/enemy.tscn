@@ -59,6 +59,7 @@ wave_delay = 4
 bullet_speed = 0.1
 bullet_time = 3
 bullet_quantity = 120
+auto_start = true
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -92,6 +93,6 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="fire_wave"]
 
 
