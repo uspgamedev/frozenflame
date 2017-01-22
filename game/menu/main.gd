@@ -10,7 +10,7 @@ func _ready():
   set_process_input(true)
 
 func _input(ev):
-  if ev.is_action_pressed("ui_accept"):
+  if ev.is_action_pressed("game_panic"):
     sfx.play()
     fader.fade_out()
     yield(fader, "done_fade_out")

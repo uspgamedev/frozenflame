@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=1]
 
 [ext_resource path="res://utility/help_message.gd" type="Script" id=1]
-[ext_resource path="res://utility/PressStart-12p.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://fonts/runescape-32.fnt" type="BitmapFont" id=2]
 
 [node name="HelpMessage" type="Node2D"]
 
@@ -16,10 +16,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = -85.0
-margin/top = -31.0
-margin/right = 89.0
-margin/bottom = 33.0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 213.0
+margin/bottom = 95.0
 custom_fonts/font = ExtResource( 2 )
 text = "Press {button} to {action}"
 valign = 1

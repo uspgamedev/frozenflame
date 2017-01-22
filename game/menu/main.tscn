@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://menu/main.gd" type="Script" id=1]
 [ext_resource path="res://effects/transition.tscn" type="PackedScene" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://menu/cursor.tex" type="Texture" id=6]
 [ext_resource path="res://utility/sfx.tscn" type="PackedScene" id=7]
 [ext_resource path="res://menu/cursor.smp" type="Sample" id=8]
-[ext_resource path="res://effects/fader.tscn" type="PackedScene" id=9]
-[ext_resource path="res://maps/music/title.ogg" type="AudioStream" id=10]
+[ext_resource path="res://utility/help_message.gd" type="Script" id=9]
+[ext_resource path="res://effects/fader.tscn" type="PackedScene" id=10]
+[ext_resource path="res://maps/music/title.ogg" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=1]
 
@@ -92,6 +93,7 @@ margin/bottom = 32.0
 
 [node name="PlayOption" type="Label" parent="List"]
 
+visibility/visible = false
 anchor/top = 1
 anchor/right = 1
 anchor/bottom = 1
@@ -101,10 +103,10 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 64.0
 margin/top = 32.0
-margin/right = 0.0
+margin/right = -54.0
 margin/bottom = 0.0
 custom_fonts/font = ExtResource( 5 )
-text = "play"
+text = "press {button}"
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
@@ -112,7 +114,7 @@ max_lines_visible = -1
 
 [node name="cursor" type="Sprite" parent="List/PlayOption"]
 
-transform/pos = Vector2( -0.209958, 1 )
+transform/pos = Vector2( -1, -1 )
 texture = ExtResource( 6 )
 offset = Vector2( -24, 16 )
 
@@ -133,11 +135,38 @@ params/volume_db = -10.0
 config/samples = SubResource( 2 )
 sample = ExtResource( 8 )
 
-[node name="Fader" parent="." instance=ExtResource( 9 )]
+[node name="HelpMessage" type="Node2D" parent="List"]
+
+transform/pos = Vector2( 0, 352 )
+script/script = ExtResource( 9 )
+message = "press %s to %s"
+action = "game_panic"
+action_text = "play"
+
+[node name="Label" type="Label" parent="List/HelpMessage"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = -160.0
+margin/top = -32.0
+margin/right = 352.0
+margin/bottom = 95.0
+custom_fonts/font = ExtResource( 5 )
+text = "Press {button} to {action}"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Fader" parent="." instance=ExtResource( 10 )]
 
 [node name="MusicPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 10 )
+stream/stream = ExtResource( 11 )
 stream/play = true
 stream/loop = true
 stream/volume_db = -12.0
