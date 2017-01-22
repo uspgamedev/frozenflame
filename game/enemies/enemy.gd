@@ -5,7 +5,7 @@ const Bullet = preload("res://enemies/bullet.gd")
 export(int, "Fire", "Ice") var type = 0
 export(float) var wave_delay = 4
 export(float) var bullet_speed = 50
-export(float) var bullet_time = 3
+export(float) var bullet_time = 7
 export(int) var bullet_quantity = 120
 export(bool) var auto_start = true
 
