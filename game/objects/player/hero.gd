@@ -17,6 +17,7 @@ onready var hitbox    = get_node("hitbox")
 onready var collision = get_node("collision")
 onready var death_sfx = get_node("DeathSFX")
 onready var dash_sfx  = get_node("DashSFX")
+onready var pulse_sfx  = get_node("PulseSFX")
 
 export(float) var bullet_speed = 200
 export(float) var bullet_time = 0.3
@@ -57,6 +58,7 @@ func _act(act):
     dash_sfx.play()
   elif act == ACT.PANIC:
     self.fire_wave()
+    pulse_sfx.play()
 
 func kill():
   if not dead:
