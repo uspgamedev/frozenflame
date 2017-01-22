@@ -12,7 +12,7 @@ onready var death_panel = get_node("HUD/DeathPanel")
 onready var music_player = get_node("MusicPlayer")
 onready var tween = get_node("tween")
 
-onready var fail_sfx = death_panel.get_node("SFX")
+onready var fail_sfx = hero.get_node("FailSFX")
 
 var map_scene =  preload("res://maps/stage01/map.tscn")
 var last_entry_point = "Entrance"
@@ -32,6 +32,7 @@ func connect_all():
   input.connect("press_quit", self, "_quit")
   input.connect("press_action", hero, "_act")
   hero.connect("died", self, "player_died")
+  fail_sfx = hero.get_node("FailSFX")
   for portal in map.get_node("Bodies").get_children():
     if portal.get_script() == Portal:
       portal.connect("teleport", self, "_on_teleport")
