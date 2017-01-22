@@ -8,7 +8,10 @@ const Enemy = preload("res://enemies/enemy.gd")
 const Bullet = preload("res://enemies/bullet.gd")
 
 const DASHTIME = 0.1
-const DASHCOOLDOWN = 1.0
+const DASHCOOLDOWN = 0.5
+const PULSECOOLDOWN = 0.5
+
+var pulse_cooldown = 0;
 
 var dead = false
 
@@ -39,6 +42,13 @@ func _move_to(dir):
   elif direction == DIR.RIGHT:
     set_rotd(90)
     sprite.set_rotd(-90)
+
+func _ready():
+    set_process(true)
+
+func _fixed_process(delta):
+  if pulse_cooldown > 0:
+    pulse_cooldown -= delta
 
 func apply_damage(dmg):
   self.damage += dmg
@@ -72,6 +82,10 @@ func kill():
     add_child(death_slash)
 
 func fire_wave():
+  if pulse_cooldown > 0:
+    return
+
+  pulse_cooldown = PULSECOOLDOWN
   for bcount in range(0,bullet_quantity):
     var degree = ( 360.0 / bullet_quantity ) * bcount
     var bullet = null
