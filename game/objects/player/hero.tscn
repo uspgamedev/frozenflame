@@ -109,10 +109,10 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 9, 10, 11, 10 ] }
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=10]
 
 custom_solver_bias = 0.0
-extents = Vector2( 9, 4 )
+radius = 6.0
 
 [sub_resource type="RectangleShape2D" id=11]
 
@@ -137,7 +137,7 @@ texture = ExtResource( 3 )
 offset = Vector2( 0, -20 )
 flip_h = true
 vframes = 5
-frame = 14
+frame = 1
 
 [node name="animation" parent="sprite"]
 
@@ -169,6 +169,21 @@ shape = SubResource( 10 )
 trigger = false
 _update_shape_index = 0
 script/script = ExtResource( 4 )
+
+[node name="collisionbox" type="Polygon2D" parent="collision"]
+
+visibility/visible = false
+polygon = Vector2Array( -8, -4, 8, -4, 8, 4, -8, 4 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 0.644824 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
 
 [node name="invincibility" parent="."]
 

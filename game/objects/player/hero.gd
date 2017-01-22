@@ -12,6 +12,7 @@ var dead = false
 
 onready var sprite    = get_node("sprite")
 onready var hitbox    = get_node("hitbox")
+onready var collision = get_node("collision")
 onready var death_sfx = get_node("DeathSFX")
 onready var dash_sfx  = get_node("DashSFX")
 
