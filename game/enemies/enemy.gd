@@ -53,7 +53,6 @@ func fire_wave():
       dead_bullets.pop_back()
     get_parent().add_child(bullet)
     bullet.set_pos(get_pos())
-    fire_bullet(bullet, degree)
     bullet.setup(false, self, bullet_time, degree, bullet_speed)
 
 func on_bullet_death(bullet):
