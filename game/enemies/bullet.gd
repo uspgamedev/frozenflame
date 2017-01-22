@@ -9,6 +9,7 @@ var time = 100
 var direction = 0
 var speed = 1
 var step
+var died = false
 
 
 onready var ice_view
@@ -30,6 +31,7 @@ func setup(is_fire, enemy, time, direction, speed):
 	self.time = time
 	self.direction = deg2rad(direction)
 	self.speed = speed
+	self.died = false
 	
 	if is_fire:
 		ice_view.hide()
@@ -48,15 +50,19 @@ func _fixed_process(delta):
 	move(step * delta)
 	self.time -= delta
 	if self.time <= 0:
-		emit_signal("on_death", self)
+		auto_kill()
 
 func _on_CollisionArea_body_enter( body ):
 	# Do not kill fire bullets when they hit the player
 	if not (is_fire and (body extends Player)):
-		emit_signal("on_death", self)
+		auto_kill()
 
 	if ( not is_fire ) and ( body extends Player ):
 		body.kill()
+
+func auto_kill():
+	emit_signal("on_death", self)
+	died = true
 
 func _enter_tree():
 	get_node("CollisionArea").set_enable_monitoring(true)

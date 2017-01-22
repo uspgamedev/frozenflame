@@ -18,6 +18,7 @@ onready var destroyed = false
 onready var counter = 0
 
 var dead_bullets = []
+var all_bullets = []
 
 signal destroyed
 
@@ -31,6 +32,7 @@ func _ready():
 		var bullet = Bullet.create()
 		bullet.connect("on_death",self,"on_bullet_death")
 		dead_bullets.push_back(bullet)
+		all_bullets.push_back(bullet)
 
 func start_waves():
 	timer.start()
@@ -46,10 +48,12 @@ func fire_wave():
 		if dead_bullets.empty():
 			bullet = Bullet.create()
 			bullet.connect("on_death",self,"on_bullet_death")
+			all_bullets.push_back(bullet)
 			#printt("creating bullet")
 		else:
 			bullet = dead_bullets[dead_bullets.size() - 1]
 			dead_bullets.pop_back()
+			#printt("respawn bullet")
 		
 		get_parent().add_child(bullet)
 		bullet.set_pos(get_pos())
@@ -59,8 +63,17 @@ func on_bullet_death(bullet):
 	get_parent().call_deferred("remove_child",bullet)
 	dead_bullets.push_back(bullet)
 
+func kill_all_bullets():
+	printt("kill all: size: ", all_bullets.size())
+	while all_bullets.size() > 0:
+		var bullet = all_bullets[all_bullets.size() - 1]
+		if not bullet.died:
+			bullet.auto_kill()
+		all_bullets.pop_back()
+
 func destroy():
   if not destroyed:
+    kill_all_bullets()
     destroyed = true
     timer.disconnect("timeout", self, "_on_Timer_timeout")
     timer.disconnect("timeout", wavesfx, "play")
